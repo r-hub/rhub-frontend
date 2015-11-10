@@ -15,7 +15,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('hjs', require('hogan-express'));
 app.set('view engine', 'hjs');
-app.set('partials', { 'layout': 'layout', 'header': 'header' })
+app.set('partials', {
+    'layout': 'layout',
+    'header': 'header',
+    'ie7notice': 'ie7notice'
+})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

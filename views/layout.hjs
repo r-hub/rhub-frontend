@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>{{> header }}</head>
-  <body>{{$ content }}{{/ content }}</body>
+  <body>
+    {{> ie7notice }}
+    {{$ content }}{{/ content }}
+  </body>
 </html>
