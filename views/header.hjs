@@ -7,9 +7,6 @@
 <!-- Optional bootstrap theme -->
 <link rel="stylesheet" href = "/stylesheats/vendor/bootstrap-theme.min.css">
 
-<!-- Compiled and minified bootstrap JavaScript -->
-<script src="/javascripts/vendor/bootstrap.min.js"></script>
-
 <!-- Local styles -->
 <link rel="stylesheet" href="/stylesheets/style.css">
 

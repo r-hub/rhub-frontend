@@ -18,7 +18,8 @@ app.set('view engine', 'hjs');
 app.set('partials', {
     'layout': 'layout',
     'header': 'header',
-    'ie7notice': 'ie7notice'
+    'ie7notice': 'ie7notice',
+    'footer': 'footer'
 })
 
 // uncomment after placing your favicon in /public

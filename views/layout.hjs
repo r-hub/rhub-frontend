@@ -4,5 +4,6 @@
   <body>
     {{> ie7notice }}
     {{$ content }}{{/ content }}
+    {{> footer }}
   </body>
 </html>
