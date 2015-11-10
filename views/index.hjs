@@ -1,4 +1,4 @@
-{{<layout}}{{$content}}
+{{< layout }}{{$ content }}
   <h1>{{ title }}</h1>
   <p> Welcome to {{ title }}</p>
-{{/content}}{{/layout}}
+{{/ content }}{{/ layout }}
