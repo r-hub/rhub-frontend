@@ -2,10 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Compiled and minified bootstrap CSS -->
-<link rel="stylesheet" href="/stylesheats/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="/stylesheets/vendor/bootstrap.min.css">
 
 <!-- Optional bootstrap theme -->
-<link rel="stylesheet" href = "/stylesheats/vendor/bootstrap-theme.min.css">
+<link rel="stylesheet" href = "/stylesheets/vendor/bootstrap-theme.min.css">
 
 <!-- Local styles -->
 <link rel="stylesheet" href="/stylesheets/style.css">
