@@ -4,14 +4,14 @@
 
       <h1 class="text-center">The r-hub builder</h1>
 
-      <form role="form" class="text-center" action="/upload"
+      <form role="form" class="text-center" action="/job"
 	    method="POST" enctype="multipart/form-data">
 
 	<div class="input-group">
 
           <span class="input-group-btn">
             <span class="btn btn-primary btn-file btn-lg">
-              Select R package&hellip; <input type="file">
+              Select R package&hellip; <input type="file" name="package">
             </span>
           </span>
           <input type="text" class="form-control input-lg" readonly>
@@ -33,6 +33,8 @@
   </div>
 {{/ content }}{{/ layout }}
 
+  <!-- Mostly based on:
+       http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/ -->
 
 {{$ scripts }}
   <script>
@@ -53,7 +55,7 @@
           input.val(log);
 
         } else {
-          if( log ) alert(log);
+          if (log) alert(log);
         }
       });
     });

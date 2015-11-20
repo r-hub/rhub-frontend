@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var gzipStatic = require('connect-gzip-static');
 
 var routes = require('./routes/index');
+var job = require('./routes/job');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(gzipStatic(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/job', job)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
