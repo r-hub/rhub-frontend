@@ -31,7 +31,9 @@ app.use(cookieParser());
 app.use(gzipStatic(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/job', job)
+app.use('/job', job);
+
+app.use('/file', express.static('uploads'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
