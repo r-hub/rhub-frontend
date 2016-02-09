@@ -11,7 +11,7 @@ router.post(
     '/',
     uploader.single('package'),
     function(req, res, next) {
-	queue_job(req.file, req.body);
+	queue_job(req);
 	res.end("OK");
     }
 )
