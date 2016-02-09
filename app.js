@@ -8,6 +8,7 @@ var gzipStatic = require('connect-gzip-static');
 
 var routes = require('./routes/index');
 var job = require('./routes/job');
+var dokkucheck = require('./routes/check');
 
 var app = express();
 
@@ -34,6 +35,8 @@ app.use('/', routes);
 app.use('/job', job);
 
 app.use('/file', express.static('uploads'));
+
+app.use('/check', dokkucheck);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
