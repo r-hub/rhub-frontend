@@ -1,0 +1,5 @@
+{{< layout}}{{$ content }}
+Thank you for submitting package {{ package }}.
+Once the package is checked, a notification email will be sent
+to the address of the maintainer: {{ email }}.
+{{/ content }}{{/ layout }}

@@ -1,0 +1,5 @@
+{{< layout}}{{$ content }}
+Thank you for submitting package {{ package }}.
+Unfortunately something went wrong. Please check that you uploaded a proper
+R package.
+{{/ content }}{{/ layout }}
