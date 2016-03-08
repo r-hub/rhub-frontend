@@ -1,0 +1,38 @@
+<div class="row"><div class="col-lg-10">
+    <h1 class="text-center">The r-hub builder</h1>
+</div></div>
+
+<form role="form" class="text-center" action="/job"
+      method="POST" enctype="multipart/form-data">
+  
+  <div class="row">
+    
+    <div class="col-lg-10">
+      
+      <div class="form-group">
+	
+	<div class="input-group">
+          <span class="input-group-btn">
+	    <span class="btn btn-primary btn-file btn-lg">
+	      Select R package&hellip; <input type="file" name="package">
+	    </span>
+          </span>
+          <input type="text" class="form-control input-lg" readonly>
+          <span class="input-group-btn">
+	    <button class="btn btn-success btn-lg btn-file" type="submit">
+	      <span class="glyphicon glyphicon-upload"></span>
+	    </button>
+	  </span>
+	</div>
+	
+      </div> <!-- form-group -->
+      
+    </div> <!-- col-lg-10 -->
+    
+    <div class="col-lg-2">
+      <a href="/advanced" class="btn btn-lg">Advanced</a>
+    </div>
+    
+  </div> <!-- row -->
+  
+</form>

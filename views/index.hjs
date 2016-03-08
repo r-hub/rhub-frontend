@@ -2,32 +2,13 @@
   <div class="jumbotron search-box">
     <div class="container">
 
-      <h1 class="text-center">The r-hub builder</h1>
+      {{^ advanced }}
+        {{< simple }}{{/ simple }}
+      {{/ advanced }}
 
-      <form role="form" class="text-center" action="/job"
-	    method="POST" enctype="multipart/form-data">
-
-	<div class="input-group">
-
-          <span class="input-group-btn">
-            <span class="btn btn-primary btn-file btn-lg">
-              Select R package&hellip; <input type="file" name="package">
-            </span>
-          </span>
-          <input type="text" class="form-control input-lg" readonly>
-          <span class="input-group-btn">
-	    <button class="btn btn-success btn-lg btn-file" type="submit">
-	      <span class="glyphicon glyphicon-upload"></span>
-	    </button>
-	  </span>
-
-	</div>
-
-      </form>
-
-      <span class="help-block text-center">
-        By uploading a file you agree to the terms and conditions.
-      </span>
+      {{# advanced }}
+	{{< adv }}{{/ adv }}
+      {{/ advanced }}
 
     </div>
   </div>

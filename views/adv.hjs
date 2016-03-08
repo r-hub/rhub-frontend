@@ -1,0 +1,44 @@
+
+<div class="row"><div class="col-lg-10">
+    <h1>The r-hub builder</h1>
+</div></div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <form role="form" action="/job"
+	  method="POST" enctype="multipart/form-data">
+
+      <p class="help-block">Select the R package to upload</p>
+      
+      <div class="form-group">
+	<div class="input-group">
+          <span class="input-group-btn">
+	    <span class="btn btn-default btn-file btn-lg">
+	      Select R package&hellip; <input type="file" name="package">
+	    </span>
+          </span>
+          <input type="text" class="form-control input-lg" readonly>
+	</div>
+      </div>
+
+      <p class="help-block">Select platform to build on</p>
+
+      <div class="form-group">
+	  <div class="radio">
+	    <label><input type="radio" name="platform" value="debian-gcc-release"
+			  checked="">
+	      Debian GNU/Linux testing, R-release
+	    </label>
+	  </div>
+	  <div class="radio">
+	    <label><input type="radio" name="platform" value="debian-gcc-devel">
+	      Debian GNU/Linux testing, R-devel
+	    </label>
+	  </div>
+      </div>
+      
+      <button type="submit" class="btn btn-lg btn-success btn-file">Submit</button>
+      
+    </form>
+  </div>
+</div>

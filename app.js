@@ -20,7 +20,9 @@ app.set('partials', {
     'layout': 'layout',
     'header': 'header',
     'ie7notice': 'ie7notice',
-    'footer': 'footer'
+    'footer': 'footer',
+    'simple': 'simple',
+    'adv': 'adv'
 })
 
 // uncomment after placing your favicon in /public
