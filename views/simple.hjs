@@ -30,7 +30,7 @@
     </div> <!-- col-lg-10 -->
     
     <div class="col-lg-2">
-      <a href="/advanced" class="btn btn-lg">Advanced</a>
+      <a href="/advanced" class="btn btn-lg btn-default">Advanced</a>
     </div>
     
   </div> <!-- row -->
