@@ -18,8 +18,11 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "rdesc-parser": "git://github.com/r-hub/rdesc-parser.git",
+    "rhub-node": "git://github.com/r-hub/rhub-node.git",
     "serve-favicon": "~2.3.0",
     "tar-stream": "^1.3.2",
+    "url": "^0.11.0",
+    "uuid": "^2.0.1",
     "when": "^3.7.5"
   }
 }
