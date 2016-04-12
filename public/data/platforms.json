@@ -8,7 +8,7 @@
 	"cpu-type": "x86_64",
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
-	"docker-image": "rhub/debian-gcc-devel",
+	"docker-image": "debian-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-debian-gcc"
     },
 
@@ -21,7 +21,7 @@
 	"cpu-type": "x86_64",
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
-	"docker-image": "rhub/debian-gcc-release",
+	"docker-image": "debian-gcc-release",
 	"sysreqs-platform": "linux-x86_64-debian-gcc"
     },
 
@@ -34,7 +34,7 @@
 	"cpu-type": "x86_64",
 	"os-info": "Fedora 22",
 	"compilers": "GCC 5.3.1",
-	"docker-image": "rhub/fedora-gcc-devel",
+	"docker-image": "fedora-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-gcc"
     }
 ]
