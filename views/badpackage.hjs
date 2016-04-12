@@ -1,5 +1,12 @@
 {{< layout}}{{$ content }}
+<p>
 Thank you for submitting package {{ package }}.
 Unfortunately something went wrong. Please check that you uploaded a proper
 R package.
+</p>
+<h3>Error:</h3>
+<pre>
+{{{ error }}}
+</pre>
+</p>
 {{/ content }}{{/ layout }}
