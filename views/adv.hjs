@@ -24,17 +24,13 @@
       <p class="help-block">Select platform to build on</p>
 
       <div class="form-group">
+      {# platforms }}
 	  <div class="radio">
-	    <label><input type="radio" name="platform" value="debian-gcc-release"
-			  checked="">
-	      Debian GNU/Linux testing, R-release
+	    <label><input type="radio" name="platform" value="{{ name }}">
+	      {{ description }}
 	    </label>
 	  </div>
-	  <div class="radio">
-	    <label><input type="radio" name="platform" value="debian-gcc-devel">
-	      Debian GNU/Linux testing, R-devel
-	    </label>
-	  </div>
+	{{/ platforms }}
       </div>
       
       <button type="submit" class="btn btn-lg btn-success btn-file">Submit</button>

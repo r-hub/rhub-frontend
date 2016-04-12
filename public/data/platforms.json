@@ -1,0 +1,40 @@
+[
+    {
+	"name": "debian-gcc-devel",
+	"description": "Debian Linux, R-devel, GCC",
+	"cran-name": "r-devel-linux-x86_64-debian-gcc",
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Debian GNU/Linux testing",
+	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
+	"docker-image": "rhub/debian-gcc-devel",
+	"sysreqs-platform": "linux-x86_64-debian-gcc"
+    },
+
+    {
+	"name": "debian-gcc-release",
+	"description": "Debian Linux, R-release, GCC",
+	"cran-name": "r-release-linux-x86_64",
+	"rversion": "r-release",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Debian GNU/Linux testing",
+	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
+	"docker-image": "rhub/debian-gcc-release",
+	"sysreqs-platform": "linux-x86_64-debian-gcc"
+    },
+
+    {
+	"name": "fedora-gcc-devel",
+	"description": "Fedora Linux, R-devel, GCC",
+	"cran-name": "r-devel-linux-x86_64-fedora-gcc",
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Fedora 22",
+	"compilers": "GCC 5.3.1",
+	"docker-image": "rhub/fedora-gcc-devel",
+	"sysreqs-platform": "linux-x86_64-fedora-gcc"
+    }
+]

@@ -8,6 +8,7 @@ var gzipStatic = require('connect-gzip-static');
 
 var routes = require('./routes/index');
 var job = require('./routes/job');
+var platform = require('./routes/platform');
 var dokkucheck = require('./routes/check');
 
 var app = express();
@@ -35,6 +36,9 @@ app.use(gzipStatic(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/job', job);
+
+// The JSON API
+app.use('/api/platform', platform);
 
 app.use('/file', express.static('uploads'));
 
