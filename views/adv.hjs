@@ -24,7 +24,7 @@
       <p class="help-block">Select platform to build on</p>
 
       <div class="form-group">
-      {# platforms }}
+        {{# platforms }}
 	  <div class="radio">
 	    <label><input type="radio" name="platform" value="{{ name }}">
 	      {{ description }}
