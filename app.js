@@ -5,10 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var gzipStatic = require('connect-gzip-static');
+var session = require('express-session');
+var passport = require('passport');
 
 var routes = require('./routes/index');
 var job = require('./routes/job');
 var platform = require('./routes/platform');
+var login = require('./routes/login');
 var dokkucheck = require('./routes/check');
 
 var app = express();
@@ -34,8 +37,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(gzipStatic(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
 app.use('/job', job);
+
+app.use('/', login);
 
 // The JSON API
 app.use('/api/platform', platform);

@@ -1,0 +1,16 @@
+{{< layout}}{{$ content }}
+
+<p>
+About to check {{ package }}.
+</p>
+
+<p>
+But first you need to prove that you are the package maintainer, i.e. the
+{{ email }} email address belongs to you.
+</p>
+
+<p>
+You can do this via your <a href="/login/github">GitHub account</a>.
+</p>
+
+{{/ content }}{{/ layout }}
