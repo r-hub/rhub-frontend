@@ -32,7 +32,7 @@ router.post(
 	    } else {
 		if (auth_ok(req, job)) {
 		    queue_job(job);
-		    res.render('ok', req.session.job);
+		    res.render('ok', job);
 		} else {
 		    req.session.job = job;
 		    res.render('verify', req.session.job);

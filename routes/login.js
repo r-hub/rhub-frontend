@@ -2,6 +2,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var mail_verification_code = require('../lib/mail-verification-code');
+
+var queue_job = require('../lib/queue-job');
 
 router.get('/login', function(req, res) {
     res.render("verify", req.session.job);
@@ -30,9 +33,35 @@ router.get(
 router.get(
     '/login/sendcode',
     function(req, res) {
-	console.log("sending code");
-	if (!req.session.job) { res.render('error'); }
-	res.send('OK');
+	if (!req.session || !req.session.job) {
+	    return res.status(404)
+		.send("No package upload?");
+	}
+	mail_verification_code(req, function(err, done) {
+	    if (err) {
+		res.status(404)
+		    .send("Cannot send email");
+	    } else {
+		res.send("OK");
+	    }
+	})
+    }
+);
+
+router.post(
+    '/login/submitcode',
+    function(req, res) {
+	if (!req.session || !req.session.job) { res.redirect('/'); }
+	var submitted = req.body.code;
+	if (submitted == req.session.verification) {
+	    queue_job(req.session.job);
+	    if (!req.session.passport) { req.session.passport = { }; }
+	    req.session.passport.user = 'email:' + req.session.job.email;
+	    res.render('ok', req.session.job);
+	    delete req.session.job;
+	} else {
+	    res.render('verify', req.session.job);
+	}
     }
 );
 

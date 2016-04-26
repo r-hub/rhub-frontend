@@ -18,6 +18,7 @@
     "hogan.js": "^3.0.2",
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
+    "multiline": "^1.0.2",
     "passport-github": "^1.1.0",
     "rdesc-parser": "git://github.com/r-hub/rdesc-parser.git",
     "rhub-node": "git://github.com/r-hub/rhub-node.git",
