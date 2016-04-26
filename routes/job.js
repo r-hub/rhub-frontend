@@ -34,13 +34,11 @@ router.post(
 		    queue_job(job);
 		    res.render('ok', req.session.job);
 		} else {
-	            req.session.job = job;
+		    req.session.job = job;
 		    res.render('verify', req.session.job);
 		}
 	    }
 	})
-    },
-  function(req, res, next) {
     }
 );
 

@@ -7,12 +7,38 @@ var bodyParser = require('body-parser');
 var gzipStatic = require('connect-gzip-static');
 var session = require('express-session');
 var passport = require('passport');
+var GitHubStrategy = require('passport-github').Strategy;
+var uuid = require('uuid');
 
 var routes = require('./routes/index');
 var job = require('./routes/job');
 var platform = require('./routes/platform');
 var login = require('./routes/login');
 var dokkucheck = require('./routes/check');
+
+var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+
+passport.use(
+    new GitHubStrategy(
+	{
+	    clientID: GITHUB_CLIENT_ID,
+	    clientSecret: GITHUB_CLIENT_SECRET,
+	    callbackURL: 'http://127.0.0.1:3000/login/github/callback'
+	},
+	function(accessToken, refreshToken, profile, cb) {
+	    return cb(null, 'github:' + JSON.stringify(profile.emails));
+	}
+    )
+);
+
+passport.serializeUser(function(user, cb) {
+    cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
+});
 
 var app = express();
 
@@ -38,9 +64,15 @@ app.use(cookieParser());
 app.use(gzipStatic(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
+    secret: 'r-hub magic going on',
+    resave: true,
+    saveUninitialized: true,
+    genid: function(req) { return uuid.v4(); },
+    name: "r-hub frontend",
+    cookie: {
+	maxAge: 36000000,
+	httpOnly: false
+    }
 }));
 
 app.use(passport.initialize());
