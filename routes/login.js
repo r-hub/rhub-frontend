@@ -27,4 +27,13 @@ router.get(
     }
 );
 
+router.get(
+    '/login/sendcode',
+    function(req, res) {
+	console.log("sending code");
+	if (!req.session.job) { res.render('error'); }
+	res.send('OK');
+    }
+);
+
 module.exports = router;

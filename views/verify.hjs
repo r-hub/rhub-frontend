@@ -4,13 +4,52 @@
 About to check {{ package }}.
 </p>
 
+<hr>
+
 <p>
 But first you need to prove that you are the package maintainer, i.e. the
 {{ email }} email address belongs to you.
 </p>
 
+<hr>
+
 <p>
 You can do this via your <a href="/login/github">GitHub account</a>.
 </p>
+
+<hr>
+
+<p>
+Alternatively you can log in with a verification code, sent to {{ email }}.
+</p>
+
+<form class="form-inline">
+  <div class="form-group">
+    <a href="/login/sendcode" class="btn btn-default" id="sendcode">
+      Send code
+    </a>
+    <input type="text" class="form-control" id="verificationCode"
+	   placeholder="Enter code here">
+    <button class="btn btn-success" type="submit" id="submitcode">
+      Submit code
+    </button>
+  </div>
+</form>
+
+<script>
+  function add_clicks() {
+      $('#sendcode').click(function(e) {
+	  $.get('/login/sendcode')
+	      .done(function() {
+		  alert( "success" );
+	      })
+	      .fail(function() {
+		  alert( "error" );
+	      });
+          return false;
+      })
+  }
+  window.onload = add_clicks;
+</script>
 
 {{/ content }}{{/ layout }}
