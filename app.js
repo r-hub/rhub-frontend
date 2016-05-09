@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var gzipStatic = require('connect-gzip-static');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var uuid = require('uuid');
@@ -18,7 +19,10 @@ var dokkucheck = require('./routes/check');
 
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL
+var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL ||
+    'http://127.0.0.1:3000';
+var REDIS_URL = process.env.REDIS_URL ||
+    'redis://127.0.0.1:6379/0';
 
 passport.use(
     new GitHubStrategy(
@@ -73,7 +77,10 @@ app.use(session({
     cookie: {
 	maxAge: 36000000,
 	httpOnly: false
-    }
+    },
+    store: new RedisStore({
+	url: REDIS_URL
+    })
 }));
 
 app.use(passport.initialize());
