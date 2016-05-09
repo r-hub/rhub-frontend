@@ -54,6 +54,7 @@ app.set('view engine', 'hjs');
 app.set('partials', {
     'layout': 'layout',
     'header': 'header',
+    'navbar': 'navbar',
     'ie7notice': 'ie7notice',
     'footer': 'footer',
     'simple': 'simple',

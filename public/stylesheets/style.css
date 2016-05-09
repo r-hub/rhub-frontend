@@ -35,3 +35,7 @@ input[readonly] {
 .terms {
     font-size: 140%;
 }
+
+.content {
+    margin-top: 30px;
+}

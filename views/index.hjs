@@ -10,14 +10,6 @@
 	{{< adv }}{{/ adv }}
       {{/ advanced }}
 
-      {{# user }}
-        Logged in via {{ via }} as {{ user }}. <a href="/logout">Logout.</a>
-      {{/ user }}
-
-      {{^ user }}
-        Not logged in. We'll verify your email address after uploading the file.
-      {{/ user }}
-
     </div>
   </div>
 {{/ content }}{{/ layout }}

@@ -3,7 +3,8 @@
   <head>{{> header }}</head>
   <body>
     {{> ie7notice }}
-    {{$ content }}{{/ content }}
+    {{> navbar }}
+    <div class="content">{{$ content }}{{/ content }}</content>
     {{> footer }}
     {{$ scripts }}{{/ scripts }}
   </body>
