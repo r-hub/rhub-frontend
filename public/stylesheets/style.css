@@ -31,3 +31,7 @@ input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
+
+.terms {
+    font-size: 140%;
+}

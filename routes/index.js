@@ -25,4 +25,8 @@ router.get('/advanced', function(req, res, next) {
     );
 });
 
+router.get('/terms.html', function(req, res) {
+    res.render('terms', { 'user': get_user(req) });
+});
+
 module.exports = router;

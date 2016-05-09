@@ -1,0 +1,57 @@
+{{< layout }}{{$ content }}
+
+<div class="container terms">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 page-header">
+      <h1>The r-hub builder, terms of use</h1>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="row"><div class="col-md-12">
+
+	  <h2>Introduction</h2>
+
+	  <p>The r-hub builder service is provided free of charge by the
+	    R consortium.</p>
+
+	  <p>By uploading your R package, you agree to these terms and
+	    conditions.</p>
+
+	  <p>Whereas there are currently no limits for R package
+	    submissions, we reserve the right to introduce rate limits
+	    for the number of packages uploaded per time period,
+	    in the future.</p>
+
+	  <h2>Cookies</h2>
+
+	  <p>This web site uses cookies to carry out the email address
+	    check, and to maintain a user session.</p>
+
+	  <h2>User tracking and data</h2>
+
+	  <p>We do not store any data about our users, apart from the
+	    session information. The session information is deleted
+	    once the user logs out.</p>
+
+	  <p>We do not share the uploaded packages with anyone, and
+	    only store them temporarily, until the build and check
+	    process is completed.</p>
+
+	  <p>We store the check results (the console output) for a
+	    short period of time, currently three days, for debugging
+	    purposes. We do not give out the check output to anyone,
+	    except for the package maintainer, as declared in the
+	    DESCRIPTION file of the package.</p>
+
+	  <h2>Disclaimer</h2>
+
+	  <p>You use this service at your own risk.</p>
+
+	  <p>We are not responsible for the code your R package runs
+	    during the package build and check.</p>
+
+      </div></div>
+    </div>
+  </div>
+</div>
+
+{{/ content }}{{/ layout }}
