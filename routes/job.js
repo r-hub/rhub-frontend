@@ -5,6 +5,7 @@ var rhub = require('rhub-node');
 var create_job = require('../lib/create-job');
 var create_cran_job = require('../lib/create-cran-job');
 var queue_job = require('../lib/queue-job');
+var get_user = require('../lib/get-user');
 var auth_ok = require('../lib/auth-ok');
 var uploader = multer({
     dest: __dirname + '/../uploads/'
@@ -28,13 +29,18 @@ router.post(
     function(req, res, next) {
 	create_job(req, function(err, job) {
 	    if (err) {
-		res.render("badpackage", { 'error': err });
+		res.render(
+		    "badpackage",
+		    { 'error': err, user: get_user(req) }
+		);
 	    } else {
 		if (auth_ok(req, job)) {
 		    queue_job(job);
+		    job.user = get_user(req);
 		    res.render('ok', job);
 		} else {
 		    req.session.job = job;
+		    req.session.job.user = get_user(req)
 		    res.render('verify', req.session.job);
 		}
 	    }
@@ -47,13 +53,16 @@ router.get(
     function(req, res, next) {
 	if (auth_ok(req, req.session.job)) {
 	    queue_job(req.session.job);
+	    req.session.job.user = get_user(req);
 	    res.render('ok', req.session.job);
 	} else {
 	    res.render(
 		'badpackage',
 		{ 'error': 'cannot verify email address',
 		  'package': req.session.job['package'],
-		  'job': req.session.job }
+		  'job': req.session.job,
+		  'user': get_user(req)
+		}
 	    );
 	}
     }
@@ -65,9 +74,13 @@ router.post(
 	var package = req.params[0];
 	create_cran_job(package, req, function(err, job) {
 	    if (err) {
-		res.render("badpackage", { 'error': err });
+		res.render(
+		    "badpackage",
+		    { 'error': err, user: get_user(req) }
+		);
 	    } else {
 		queue_job(job);
+		job.user = get_user(req);
 		res.render("ok", job);
 	    }
 	})

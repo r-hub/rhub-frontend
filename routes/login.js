@@ -3,10 +3,12 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var mail_verification_code = require('../lib/mail-verification-code');
+var get_user = require('../lib/get-user');
 
 var queue_job = require('../lib/queue-job');
 
 router.get('/login', function(req, res) {
+    req.session.job.user = get_user(req);
     res.render("verify", req.session.job);
 });
 
@@ -57,6 +59,7 @@ router.post(
 	    queue_job(req.session.job);
 	    if (!req.session.passport) { req.session.passport = { }; }
 	    req.session.passport.user = 'email:' + req.session.job.email;
+	    req.session.job.user = get_user(req);
 	    res.render('ok', req.session.job);
 	    delete req.session.job;
 	} else {
