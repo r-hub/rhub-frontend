@@ -37,7 +37,7 @@ router.post(
 		if (auth_ok(req, job)) {
 		    queue_job(job);
 		    job.user = get_user(req);
-		    res.render('ok', job);
+		    res.render('status', job);
 		} else {
 		    req.session.job = job;
 		    req.session.job.user = get_user(req)
@@ -54,7 +54,7 @@ router.get(
 	if (auth_ok(req, req.session.job)) {
 	    queue_job(req.session.job);
 	    req.session.job.user = get_user(req);
-	    res.render('ok', req.session.job);
+	    res.render('status', req.session.job);
 	} else {
 	    res.render(
 		'badpackage',
@@ -81,7 +81,7 @@ router.post(
 	    } else {
 		queue_job(job);
 		job.user = get_user(req);
-		res.render("ok", job);
+		res.render("status", job);
 	    }
 	})
     }

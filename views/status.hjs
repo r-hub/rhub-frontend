@@ -1,11 +1,11 @@
 <!-- mode: -*- html -*- -->
 {{< layout}}{{$ content }}
 
-<p> Status for build {{ name }}, package {{ pkg }}, version {{ version }}:
+<p> Status for build {{ package }}, package {{ pkg }}, version {{ version }}:
 </p>
 
 <div class="fluidIframe">
-  <iframe src="{{ iframeUrl }}"></iframe>
+  <iframe src="{{ logUrl }}"></iframe>
 </div>
 
 {{/ content }}{{/ layout }}

@@ -28,12 +28,12 @@ router.get(new RegExp('^/' + re_status), function(req, res) {
 
     res.render(
 	'status',
-	{ 'name': name,
+	{ 'package': name,
 	  'pkg': pkg,
 	  'version': version,
-	  'hash': hash,
+	  'filename': hash,
 	  'user': get_user(req),
-	  'iframeUrl': iframeUrl
+	  'logUrl': iframeUrl
 	}
     );
 });
