@@ -28,7 +28,8 @@ router.get(new RegExp('^/' + re_status), function(req, res) {
 
     res.render(
 	'status',
-	{ 'package': name,
+	{ 'buildId': name,
+	  'package': pkg + '_' + version + '.tar.gz',
 	  'pkg': pkg,
 	  'version': version,
 	  'filename': hash,
