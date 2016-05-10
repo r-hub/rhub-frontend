@@ -1,0 +1,11 @@
+<!-- mode: -*- html -*- -->
+{{< layout}}{{$ content }}
+
+<p> Status for build {{ name }}, package {{ pkg }}, version {{ version }}:
+</p>
+
+<div class="fluidIframe">
+  <iframe src="{{ iframeUrl }}"></iframe>
+</div>
+
+{{/ content }}{{/ layout }}

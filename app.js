@@ -16,6 +16,7 @@ var job = require('./routes/job');
 var platform = require('./routes/platform');
 var login = require('./routes/login');
 var dokkucheck = require('./routes/check');
+var status = require('./routes/status');
 
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
@@ -91,6 +92,7 @@ app.use('/', routes);
 app.use('/job', job);
 
 app.use('/', login);
+app.use('/status', status);
 
 // The JSON API
 app.use('/api/platform', platform);
