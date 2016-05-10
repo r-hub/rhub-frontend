@@ -60,7 +60,7 @@ router.post(
 	    if (!req.session.passport) { req.session.passport = { }; }
 	    req.session.passport.user = 'email:' + req.session.job.email;
 	    req.session.job.user = get_user(req);
-	    res.render('ok', req.session.job);
+	    res.render('status', req.session.job);
 	    delete req.session.job;
 	} else {
 	    res.render('verify', req.session.job);
