@@ -1,12 +1,16 @@
 <!-- mode: -*- html -*- -->
 {{< layout}}{{$ content }}
 
-    <p> Status for build
-      <a href="/status/{{ buildId }}">{{ buildId }}</a>,
-      package {{ pkg }}, version {{ version }}:
-    </p>
+    <div class="container">
 
-    <div id="log"></div>
+      <p> Status for build
+	<a href="/status/{{ buildId }}">{{ buildId }}</a>,
+	package {{ pkg }}, version {{ version }}:
+      </p>
+
+      <div id="log"></div>
+
+    </div>
 
 <script>
   function stream_log() {
