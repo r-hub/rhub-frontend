@@ -4,6 +4,8 @@ var router = express.Router();
 var r = require('rhub-node');
 var JenkinsLogStream = require('jenkins-log-stream');
 var get_user = require('../lib/get-user');
+var byline = require('byline');
+var LogFilter = require('../lib/filter-log');
 
 var JENKINS_URL = process.env.JENKINS_URL;
 
@@ -47,10 +49,18 @@ router.get(new RegExp('^/log/' + re_status), function(req, res) {
 	'baseUrl': JENKINS_URL,
 	'job': name
     });
+    var log_by_line = byline(log);
+    var logFilter = new LogFilter();
 
-    res.header("Content-Type", "text/plain");
+    res.header("Content-Type", "text/html")
+	.write(
+	    "<!doctype html>" +
+	    "<html lang=en><head><meta charset=utf-8>" +
+	    "<link rel=\"stylesheet\" href=\"/stylesheets/logstyle.css\">" +
+	    "</head><body>"
+	);
 
-    log.pipe(res);
+    log_by_line.pipe(logFilter).pipe(res)
 });
 
 module.exports = router;
