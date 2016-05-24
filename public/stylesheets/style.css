@@ -57,3 +57,42 @@ input[readonly] {
     height: 100%;
     border: 0;
 }
+
+
+.log-block {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    padding-left: 20px;
+    line-height: 130%;
+}
+
+.log-h1 {
+    font-weight: bold;
+    font-size: 120%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.log-output {
+    color: #aaa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.log-input {
+    margin-bottom: 10px;
+    color: #0;
+}
+
+.log-lineno {
+    color: rgba(0,0,0,0.4);
+    white-space: pre;
+    min-width: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+.log-lineno:hover {
+    color: rgba(0,0,0,0.7);
+}

@@ -6,8 +6,19 @@
       package {{ pkg }}, version {{ version }}:
     </p>
 
-    <div class="fluidIframe">
-      <iframe src="{{ logUrl }}"></iframe>
-    </div>
+    <div id="log"></div>
+
+<script>
+  function stream_log() {
+    var client = new XMLHttpRequest();
+    client.open('get', '/status/embedded/{{ buildId }}');
+    client.send();
+    client.onprogress = function() {
+      var div = document.getElementById('log');
+      div.innerHTML = this.responseText;
+    }
+  }
+  window.onload = stream_log;
+</script>
 
 {{/ content }}{{/ layout }}
