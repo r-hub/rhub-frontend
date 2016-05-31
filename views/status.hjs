@@ -3,7 +3,7 @@
 
     <div class="container">
 
-      <div class="panel panel-primary">
+      <div class="panel panel-default" id="panel">
 	<div class="panel-heading">
 	  <h3 class="panel-title">
 	    Status for build
@@ -15,8 +15,9 @@
 	  <div class="well">
 	    <b>Package:</b>  {{pkg }} <br>
 	    <b>Version:</b>  {{ version }} <br>
-	    <b>Submitted:</b> TODO <br>
-	    <b>Status:</b> TODO
+	    <!-- <b>Submitted:</b> <span id="submitted">...</span> <br> -->
+	    <b>Status:</b> <span id="status">...</span> <br>
+	    <b>Duration:</b> <span id="duration">...</span>
 	  </div>
 	  <hr>
 	  <div id="log"></div>
@@ -29,13 +30,47 @@
   function stream_log() {
     var client = new XMLHttpRequest();
     client.open('get', '/status/embedded/{{ buildId }}');
-    client.send();
     client.onprogress = function() {
       var div = document.getElementById('log');
       div.innerHTML = this.responseText;
     }
+    client.send();
   }
-  window.onload = stream_log;
+</script>
+
+<script>
+  function update_status() {
+    var client = new XMLHttpRequest();
+    client.onreadystatechange = function() {
+      if (client.readyState == 4 && client.status == 200) {
+        var stat = JSON.parse(client.responseText);
+        var status = stat.status;
+        document.getElementById('status').innerHTML = status;
+        if (status == 'error') {
+          document.getElementById('panel').className = 'panel panel-danger';
+        } else if (status == 'success') {
+          document.getElementById('panel').className = 'panel panel-success';
+        }
+        // document.getElementById('submitted').innerHTML = stat.submitted;
+        if (stat.duration) {
+          document.getElementById('duration').innerHTML = stat.duration;
+        }
+        if (status != 'success' && status != 'error' &&
+            status != 'warning' && status != 'note') {
+          setTimeout(update_status, 5000);
+        }
+      }
+    };
+    client.open('get', '/status/code/{{ buildId }}');
+    client.send();
+  }
+</script>
+
+<script>
+  window.onload = function() {
+    stream_log();
+    update_status();
+  }
 </script>
 
 {{/ content }}{{/ layout }}

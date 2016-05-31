@@ -7,6 +7,7 @@ var get_user = require('../lib/get-user');
 var byline = require('byline');
 var LogFilter = require('../lib/filter-log');
 var SimpleLogFilter = require('../lib/filter-log').SimpleLogFilter;
+const prettyMs = require('pretty-ms');
 
 var JENKINS_URL = process.env.JENKINS_URL;
 
@@ -84,6 +85,36 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     var simpleLogFilter = new SimpleLogFilter();
 
     log_by_line.pipe(simpleLogFilter).pipe(res)
+});
+
+router.get(new RegExp('^/code/' + re_status), function(req, res) {
+    var name = req.params[0];
+
+    var jenkins_url = process.env.JENKINS_URL ||
+	'http://jenkins.rhub.me';
+    var jenkins = require('jenkins');
+    var conn = jenkins(jenkins_url);
+
+    var info = {
+	'status': 'preparing',
+	'submitted': 'moments ago',
+	'duration': '...'
+    };
+
+    conn.build.get(name, 1, function(err, data) {
+	if (!err) {
+	    info.duration = prettyMs(data.duration, { verbose: true });
+	    if (data.building) {
+		info.status = 'in progress'
+	    } else if (data.result == 'SUCCESS') {
+		info.status = 'success'
+	    } else {
+		info.status = 'error'
+	    }
+	}
+	res.set('Content-Type', 'application/json')
+	    .send(JSON.stringify(info));
+    });
 });
 
 module.exports = router;
