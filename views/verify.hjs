@@ -1,39 +1,87 @@
+<!-- mode: -*- html -*- -->
 {{< layout}}{{$ content }}
 
-<p>
-About to check {{ package }}.
-</p>
-
-<hr>
-
-<p>
-But first you need to prove that you are the package maintainer, i.e. the
-{{ email }} email address belongs to you.
-</p>
-
-<hr>
-
-<p>
-You can do this via your <a href="/login/github">GitHub account</a>.
-</p>
-
-<hr>
-
-<p>
-Alternatively you can log in with a verification code, sent to {{ email }}.
-</p>
-
-<form class="form-inline" action="/login/submitcode" method="post">
-  <div class="form-group">
-    <a href="/login/sendcode" class="btn btn-default" id="sendcode">
-      Send code
-    </a>
-    <label for="code">Code</label>
-    <input type="text" class="form-control" id="code" name="code"
-	   placeholder="Enter code here" />
-    <button class="btn btn-success" type="submit">Submit</button>
+<div class="jumbotron search-box">
+  <div class="container">
+    <div class="row"><div class="col-lg-10">
+	<h1 class="text-center">The r-hub builder</h1>
+    </div></div>
   </div>
-</form>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6 col-eq-height">
+    <div class="well well-verify-1">
+      <h2>
+	<span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+	Package: {{ package }}
+      </h2>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-eq-height">
+    <div class="well well-verify-1">
+      <h2>
+	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+	Maintainer: {{ email }}
+      </h2>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-5"><div class="well well-verify-2">
+      <p class="verify-gh">
+	<a href="/login/github">
+	  <span class="huge-gh"><i class="fa fa-github"></i></span>
+	</a>
+      </p>
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	<div class="btn-group" role="group">
+	  <a href="/login/github" class="btn btn-primary">
+	    Verify maintainer email via GitHub
+	  </a>
+	</div>
+      </div>
+  </div></div>
+
+  <div class="col-md-2 well-verify-2 vcenter-outer">
+    <div class="vcenter">
+      <p class="verify-gh">
+	<span class="large-gh">– OR –</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-5"><div class="well well-verify-2">
+    <p class="verify-gh">
+      <a href="/login/sendcode">
+	<span class="huge-gh"><i class="fa fa-envelope"></i></span>
+      </a>
+    </p>
+    <form class="form-inline" action="/login/submitcode" method="post">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+	<a href="/login/sendcode" class="btn btn-primary" id="sendcode">
+	  Send verification code
+	</a>
+      </div>
+      <div class="btn-group" role="group">
+	<input type="text" class="form-control" id="code" name="code"
+	       placeholder="Enter code here" />
+      </div>
+      <div class="btn-group" role="group">
+	<button class="btn btn-success" type="submit">Submit</button>
+      </div>
+    </div>
+    </div>
+    </form>
+  </div>
+
+</div></div>
 
 <script>
   function add_clicks() {

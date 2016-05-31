@@ -7,6 +7,9 @@
 <!-- Optional bootstrap theme -->
 <link rel="stylesheet" href = "/stylesheets/vendor/bootstrap-theme.min.css">
 
+<!-- admin at r-hub io -->
+<script src="https://use.fontawesome.com/46a593e3c9.js"></script>
+
 <!-- Local styles -->
 <link rel="stylesheet" href="/stylesheets/style.css">
 
