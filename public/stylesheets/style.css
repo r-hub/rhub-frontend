@@ -61,7 +61,7 @@ input[readonly] {
 
 .log-block {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    padding-left: 20px;
+    padding-left: 0px;
     line-height: 130%;
 }
 
@@ -87,14 +87,21 @@ input[readonly] {
 .log-lineno {
     color: rgba(0,0,0,0.4);
     white-space: pre;
-    min-width: 20px;
+    min-width: 30px;
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 0px;
     text-decoration: none;
 }
 
 .log-lineno:hover {
     color: rgba(0,0,0,0.7);
+}
+
+.log-line {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 58px;
+    text-indent: -58px;
 }
 
 .verify-gh {
