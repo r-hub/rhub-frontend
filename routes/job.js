@@ -54,7 +54,7 @@ router.get(
 	if (auth_ok(req, req.session.job)) {
 	    queue_job(req.session.job);
 	    req.session.job.user = get_user(req);
-	    res.redirect("/status/" + job.buildId);
+	    res.redirect("/status/" + req.session.job.buildId);
 	} else {
 	    res.render(
 		'badpackage',
