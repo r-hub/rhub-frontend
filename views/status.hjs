@@ -3,12 +3,25 @@
 
     <div class="container">
 
-      <p> Status for build
-	<a href="/status/{{ buildId }}">{{ buildId }}</a>,
-	package {{ pkg }}, version {{ version }}:
-      </p>
-
-      <div id="log"></div>
+      <div class="panel panel-primary">
+	<div class="panel-heading">
+	  <h3 class="panel-title">
+	    Status for build
+	    <b><a href="/status/{{ buildId }}">{{ buildId }}</a></b>,
+	    package {{ pkg }}, version {{ version }}
+	  </h3>
+	</div>
+	<div class="panel-body">
+	  <div class="well">
+	    <b>Package:</b>  {{pkg }} <br>
+	    <b>Version:</b>  {{ version }} <br>
+	    <b>Submitted:</b> TODO <br>
+	    <b>Status:</b> TODO
+	  </div>
+	  <hr>
+	  <div id="log"></div>
+	</div>
+      </div>
 
     </div>
 
