@@ -35,9 +35,7 @@
 
   <div class="col-md-5"><div class="well well-verify-2">
       <p class="verify-gh">
-	<a href="/login/github">
-	  <span class="huge-gh"><i class="fa fa-github"></i></span>
-	</a>
+	<span class="huge-gh"><i class="fa fa-github"></i></span>
       </p>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
 	<div class="btn-group" role="group">
@@ -58,9 +56,7 @@
 
   <div class="col-md-5"><div class="well well-verify-2">
     <p class="verify-gh">
-      <a href="/login/sendcode">
-	<span class="huge-gh"><i class="fa fa-envelope"></i></span>
-      </a>
+      <span class="huge-gh"><i class="fa fa-envelope"></i></span>
     </p>
     <form class="form-inline" action="/login/submitcode" method="post">
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
