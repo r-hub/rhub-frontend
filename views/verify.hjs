@@ -1,5 +1,12 @@
 <!-- mode: -*- html -*- -->
-{{< layout}}{{$ content }}
+{{< layout}}
+
+{{$ extraheader }}
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"
+      rel="stylesheet"/>
+{{/ extraheader }}
+
+{{$ content }}
 
 <div class="jumbotron search-box">
   <div class="container">
@@ -79,20 +86,36 @@
 
 </div></div>
 
+<style>
+#toast-container > div {
+  opacity: 1;
+  font-size: 200%;
+  text-align: center;
+}
+</style>
+
+{{/content}}
+
+{{$ scripts }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js">
+</script>
+
 <script>
   function add_clicks() {
+      toastr.options.positionClass = 'toast-top-full-width';
       $('#sendcode').click(function(e) {
 	  $.get('/login/sendcode')
-	      .done(function() {
-		  alert( "Email sent" );
+              .done(function() {
+                   toastr.success('Email sent successfully');
 	      })
 	      .fail(function() {
-		  alert( "Error sending email" );
+                   toastr.error('Cannot send email!');
 	      });
           return false;
       })
   }
   window.onload = add_clicks;
 </script>
+{{/ scripts }}
 
-{{/ content }}{{/ layout }}
+{{/ layout }}
