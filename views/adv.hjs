@@ -1,3 +1,4 @@
+<!-- -*- mode: html -*- -->
 
 <div class="row"><div class="col-lg-10">
     <h1>The r-hub builder</h1>
@@ -9,7 +10,7 @@
 	  method="POST" enctype="multipart/form-data">
 
       <p class="help-block">Select the R package to upload</p>
-      
+
       <div class="form-group">
 	<div class="input-group">
           <span class="input-group-btn">
@@ -32,9 +33,17 @@
 	  </div>
 	{{/ platforms }}
       </div>
-      
+
+      <p class="help-block">Alternative email address</p>
+
+      <div class="form-group">
+	<input type="text" class="form-control input-lg"
+	       id="alternative-email" name="alternative-email"
+	       placeholder="Email address">
+      </div>
+
       <button type="submit" class="btn btn-lg btn-success btn-file">Submit</button>
-      
+
     </form>
   </div>
 </div>
