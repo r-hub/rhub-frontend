@@ -7,7 +7,7 @@
 	"os-type": "Linux",
 	"cpu-type": "x86_64",
 	"os-info": "Debian GNU/Linux testing",
-	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
+	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
 	"docker-image": "debian-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-debian-gcc"
     },
@@ -20,7 +20,7 @@
 	"os-type": "Linux",
 	"cpu-type": "x86_64",
 	"os-info": "Debian GNU/Linux testing",
-	"compilers": "GCC 5.3.1 (Debian 5.3.1-5)",
+	"compilers": "GCC 5.3.1 (Debian 5.3.1-14)",
 	"docker-image": "debian-gcc-release",
 	"sysreqs-platform": "linux-x86_64-debian-gcc"
     },
