@@ -26,6 +26,19 @@
     },
 
     {
+	"name": "debian-gcc-patched",
+	"description": "Debian Linux, R-patched, GCC",
+	"cran-name": "r-patched-linux-x86_64",
+	"rversion": "r-patched",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Debian GNU/Linux testing",
+	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
+	"docker-image": "debian-gcc-patched",
+	"sysreqs-platform": "linux-x86_64-debian-gcc"
+    },
+
+    {
 	"name": "fedora-gcc-devel",
 	"description": "Fedora Linux, R-devel, GCC",
 	"cran-name": "r-devel-linux-x86_64-fedora-gcc",
@@ -49,6 +62,31 @@
 	"compilers": "clang version 3.8.0; GNU Fortran 5.3.1",
 	"docker-image": "fedora-clang-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-clang"
-    }
+    },
 
+    {
+	"name": "ubuntu-gcc-devel",
+	"description": "Ubuntu Linux 16.04 LTS, R-devel, GCC",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Ubuntu 16.04 LTS",
+	"compilers": "GCC 5.3.1",
+	"docker-image": "ubuntu-gcc-devel",
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+    },
+
+    {
+	"name": "ubuntu-gcc-release",
+	"description": "Ubuntu Linux 16.04 LTS, R-release, GCC",
+	"cran-name": null,
+	"rversion": "r-release",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Ubuntu 16.04 LTS",
+	"compilers": "GCC 5.3.1",
+	"docker-image": "ubuntu-gcc-release",
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+    }
 ]
