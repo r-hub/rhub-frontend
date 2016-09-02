@@ -97,8 +97,8 @@ function valid_submission(req, res, data) {
     var filename = uuid.v4().replace(/-/g, "");
     var originalname = data.package + '_' + data.version + '.tar.gz';
     var url = req.protocol + '://' + req.get('host') + '/file/' + filename;
-    var logUrl = '/status/log/' + originalname + '-' + filename;
-    var rawLogUrl '/status/raw/' + originalname + '-' + filename;
+    var logUrl = '/status/' + originalname + '-' + filename;
+    var rawLogUrl = '/status/original/' + originalname + '-' + filename;
     var fullLogUrl = req.protocol + '://' + req.get('host') + logUrl;
     var fullRawLogUrl = req.protocol + '://' + req.get('host') + rawLogUrl;
 

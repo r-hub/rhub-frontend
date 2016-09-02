@@ -87,6 +87,18 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     log_by_line.pipe(simpleLogFilter).pipe(res)
 });
 
+router.get(new RegExp('^/original/' + re_status), function(req, res) {
+    var name = req.params[0];
+    var log = new JenkinsLogStream({
+	'baseUrl': JENKINS_URL,
+	'job': name
+    });
+    var log_by_line = byline(log);
+    var simpleLogFilter = new SimpleLogFilter();
+
+    log.pipe(res)
+});
+
 router.get(new RegExp('^/code/' + re_status), function(req, res) {
     var name = req.params[0];
 
