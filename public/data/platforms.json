@@ -88,5 +88,19 @@
 	"compilers": "GCC 5.3.1",
 	"docker-image": "ubuntu-gcc-release",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+    },
+
+    {
+	"name": "linux-x86_64-centos6-epel",
+	"description": "CentOS 6, stock R from EPEL",
+	"cran-name": null,
+	"rversion": "r-release",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "CentOS 6",
+	"compilers": "GCC 4.4.x",
+	"docker-image": "centos6-epel",
+	"sysreqs-platform": "linux-x86_64-centos6-epel"
     }
+
 ]
