@@ -101,6 +101,18 @@
 	"compilers": "GCC 4.4.x",
 	"docker-image": "centos6-epel",
 	"sysreqs-platform": "linux-x86_64-centos6-epel"
-    }
+    },
 
+    {
+	"name": "linux-x86_64-rocker-gcc-san",
+	"description": "Debian Linux, R-devel, AddressSanitizer",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Debian GNU/Linux testing",
+	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
+	"docker-image": "rocker-gcc-san",
+	"sysreqs-platform": "linux-x86_64-debian-gcc"
+    }
 ]
