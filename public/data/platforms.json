@@ -105,7 +105,7 @@
 
     {
 	"name": "linux-x86_64-rocker-gcc-san",
-	"description": "Debian Linux, R-devel, AddressSanitizer",
+	"description": "Debian Linux, R-devel, GCC ASAN/UBSAN",
 	"cran-name": null,
 	"rversion": "r-devel",
 	"os-type": "Linux",
