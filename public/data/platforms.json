@@ -127,5 +127,18 @@
 	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
 	"docker-image": "rocker-gcc-san",
 	"sysreqs-platform": "linux-x86_64-debian-gcc"
+    },
+
+    {
+	"name": "windows-x86_64-oldrel",
+	"description": "Windows Server 2008 R2 SP1, R-oldrel, 64 bit",
+	"cran-name": null,
+	"rversion": "r-oldrel",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2008 R2 SP1",
+	"compilers": "GCC 4.6.3, Rtools 3.3",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2008"
     }
 ]
