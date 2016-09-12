@@ -102,7 +102,7 @@ function valid_submission(req, res, data) {
     var fullLogUrl = req.protocol + '://' + req.get('host') + logUrl;
     var fullRawLogUrl = req.protocol + '://' + req.get('host') + rawLogUrl;
 
-    get_image(data.platform, function(err, image) {
+    get_image(data.platform, function(err, platform) {
 	if (err) { return internal_error(res, "Invalid platform"); }
 
 	var job = {
@@ -116,7 +116,9 @@ function valid_submission(req, res, data) {
 	    'version': data.version,
 	    'logUrl': logUrl,
 	    'submitted': Date(),
-	    'image': image
+	    'platform': platform.platform,
+	    'ostype': platform.ostype,
+	    'image': platform.image
 	};
 
 	var full_filename = __dirname + '/../uploads/' + filename;
