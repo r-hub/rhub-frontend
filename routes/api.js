@@ -10,7 +10,7 @@ var queue_job = require('../lib/queue-job');
 var fs = require('fs');
 
 router.get('/platform/list', function(req, res) {
-    res.set('Content-Type', 'application/json')
+    res.set('Content-Type', 'application/json; charset=utf-8')
 	.sendfile('./public/data/platforms.json');
 });
 
@@ -19,7 +19,7 @@ router.post('/check/validate_email', function(req, res) {
 
     // If there is no email
     if (! data.email ) {
-	return res.set('Content-Type', 'application/json')
+	return res.set('Content-Type', 'application/json; charset=utf-8')
 	    .status(400)
 	    .end(JSON.stringify({
 		"result": "error",
@@ -35,7 +35,7 @@ router.post('/check/validate_email', function(req, res) {
 
 	mail_token(data.email, token, function(err) {
 	    if (err) { return internal_error(res); }
-	    return res.set('Content-Type', 'application/json')
+	    return res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(200)
 		.end(JSON.stringify({
 		    "result": "success",
@@ -51,7 +51,7 @@ router.post('/check/submit', function(req, res) {
     // Check all fields
     if (! data.email || ! data.token || ! data.file || ! data.package ||
 	! data.version) {
-	return res.set('Content-Type', 'application/json')
+	return res.set('Content-Type', 'application/json; charset=utf-8')
 	    .status(400)
 	    .end(JSON.stringify({
 		"result": "error",
@@ -72,7 +72,7 @@ router.post('/check/submit', function(req, res) {
 		    return valid_submission(req, res, data);
 		});
 	    } else {
-		return res.set('Content-Type', 'application/json')
+		return res.set('Content-Type', 'application/json; charset=utf-8')
 		    .status(401)
 		    .end(JSON.stringify({
 			"result": "error",
@@ -84,7 +84,7 @@ router.post('/check/submit', function(req, res) {
 });
 
 function internal_error(res) {
-    return res.set('Content-Type', 'application/json')
+    return res.set('Content-Type', 'application/json; charset=utf-8')
 	.status(500)
 	.end(JSON.stringify({
 	    "result": "error",
@@ -125,7 +125,7 @@ function valid_submission(req, res, data) {
 	fs.writeFile(full_filename, data.file, 'base64', function(err) {
 	    if (err) { return internal_error(res); }
 	    queue_job(job);
-	    res.set('Content-Type', 'application/json')
+	    res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(201)
 		.end(JSON.stringify({
 		    "result": "success",
