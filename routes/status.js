@@ -52,7 +52,7 @@ router.get(new RegExp('^/log/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var logFilter = new LogFilter();
 
-    res.header("Content-Type", "text/html")
+    res.header("Content-Type", "text/html; charset=utf-8")
 	.write(
 	    "<!doctype html>" +
 	    "<html lang=en><head><meta charset=utf-8>" +
@@ -72,6 +72,8 @@ router.get(new RegExp('^/embedded/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var logFilter = new LogFilter();
 
+    res.header("Content-Type", "text/html; charset=utf-8")
+
     log_by_line.pipe(logFilter).pipe(res)
 });
 
@@ -84,6 +86,7 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var simpleLogFilter = new SimpleLogFilter();
 
+    res.header("Content-Type", "text/plain; charset=utf-8")
     log_by_line.pipe(simpleLogFilter).pipe(res)
 });
 
@@ -96,6 +99,7 @@ router.get(new RegExp('^/original/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var simpleLogFilter = new SimpleLogFilter();
 
+    res.header("Content-Type", "text/plain; charset=utf-8")
     log.pipe(res)
 });
 
