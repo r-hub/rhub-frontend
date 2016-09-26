@@ -118,7 +118,9 @@ function valid_submission(req, res, data) {
 	    'submitted': Date(),
 	    'platform': platform.platform,
 	    'ostype': platform.ostype,
-	    'image': platform.image
+	    'image': platform.image,
+	    'checkArgs': data.check_args || "",
+	    'env': data.env || { }
 	};
 
 	var full_filename = __dirname + '/../uploads/' + filename;
