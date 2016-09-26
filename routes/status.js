@@ -86,7 +86,7 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var simpleLogFilter = new SimpleLogFilter();
 
-    res.header("Content-Type", "text/plain; charset=utf-8")
+    res.header("Content-Type", "text/plain")
     log_by_line.pipe(simpleLogFilter).pipe(res)
 });
 
@@ -99,7 +99,7 @@ router.get(new RegExp('^/original/' + re_status), function(req, res) {
     var log_by_line = byline(log);
     var simpleLogFilter = new SimpleLogFilter();
 
-    res.header("Content-Type", "text/plain; charset=utf-8")
+    res.header("Content-Type", "text/plain")
     log.pipe(res)
 });
 
