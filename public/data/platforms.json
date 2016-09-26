@@ -45,8 +45,8 @@
 	"rversion": "r-devel",
 	"os-type": "Linux",
 	"cpu-type": "x86_64",
-	"os-info": "Fedora 22",
-	"compilers": "GCC 5.3.1",
+	"os-info": "Fedora 24",
+	"compilers": "GCC 6.1.1",
 	"docker-image": "fedora-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-gcc"
     },
@@ -58,8 +58,8 @@
 	"rversion": "r-devel",
 	"os-type": "Linux",
 	"cpu-type": "x86_64",
-	"os-info": "Fedora 22",
-	"compilers": "clang version 3.8.0; GNU Fortran 5.3.1",
+	"os-info": "Fedora 24",
+	"compilers": "clang version 3.8.0; GNU Fortran 6.1.1",
 	"docker-image": "fedora-clang-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-clang"
     },
