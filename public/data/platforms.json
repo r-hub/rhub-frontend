@@ -131,8 +131,8 @@
 
     {
 	"name": "windows-x86_64-oldrel",
-	"description": "Windows Server 2008 R2 SP1, R-oldrel, 64 bit",
-	"cran-name": null,
+	"description": "Windows Server 2008 R2 SP1, R-oldrel, 32/64 bit",
+	"cran-name": "r-oldrel-windows-ix86+x86_64",
 	"rversion": "r-oldrel",
 	"os-type": "Windows",
 	"cpu-type": "x86_64",
@@ -140,5 +140,45 @@
 	"compilers": "GCC 4.6.3, Rtools 3.3",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008"
+    },
+
+    {
+	"name": "windows-x86_64-release",
+	"description": "Windows Server 2008 R2 SP1, R-release, 32/64 bit",
+	"cran-name": "r-release-windows-ix86+x86_64",
+	"rversion": "r-release",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2008 R2 SP1",
+	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2008"
+    },
+
+    {
+	"name": "windows-x86_64-patched",
+	"description": "Windows Server 2008 R2 SP1, R-patched, 32/64 bit",
+	"cran-name": null,
+	"rversion": "r-patched",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2008 R2 SP1",
+	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2008"
+    },
+
+    {
+	"name": "windows-x86_64-devel",
+	"description": "Windows Server 2008 R2 SP1, R-devel, 32/64 bit",
+	"cran-name": "r-devel-windows-ix86+x86_64",
+	"rversion": "r-devel",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2008 R2 SP1",
+	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2008"
     }
+
 ]
