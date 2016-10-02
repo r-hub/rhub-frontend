@@ -116,9 +116,10 @@ function valid_submission(req, res, data) {
 	    'version': data.version,
 	    'logUrl': logUrl,
 	    'submitted': Date(),
-	    'platform': platform.platform,
-	    'ostype': platform.ostype,
-	    'image': platform.image,
+	    'platform': platform.name,
+	    'ostype': platform["os-type"],
+	    'rversion': platform.rversion,
+	    'image': platform["docker-image"],
 	    'checkArgs': data.check_args || "",
 	    'env': data.env || { }
 	};
