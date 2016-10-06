@@ -133,7 +133,7 @@ function valid_submission(req, res, data) {
 	    res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(201)
 		.end(JSON.stringify({
-		    "result": "success",
+		    "result": "submitted",
 		    "email": data.email,
 		    "id": job.buildId,
 		    "status-url": fullLogUrl,
