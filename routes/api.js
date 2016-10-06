@@ -8,6 +8,8 @@ var mail_token = require('../lib/mail-token');
 var get_image = require('../lib/get-image');
 var queue_job = require('../lib/queue-job');
 var fs = require('fs');
+var re_status = require('../lib/re-status');
+const prettyMs = require('pretty-ms');
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -140,5 +142,43 @@ function valid_submission(req, res, data) {
 	});
     });
 }
+
+router.get(new RegExp('^/status/' + re_status), function(req, res) {
+    var name = req.params[0];
+
+    var jenkins_url = process.env.JENKINS_URL ||
+	'http://jenkins.rhub.me';
+    var jenkins = require('jenkins');
+    var conn = jenkins(jenkins_url);
+
+    var info = {
+	'status': 'preparing',
+	'submitted': 'moments ago',
+	'duration': '...'
+    };
+
+    conn.build.get(name, 1, function(err, data) {
+	res.set('Content-Type', 'application/json; charset=utf-8');
+	if (err) {
+	    res.status(404)
+		.end(JSON.stringify({
+		    "result": "error",
+		    "message": "Job not found"
+		}));
+
+	} else {
+	    info.duration = prettyMs(data.duration, { verbose: true });
+	    info.submitted = new Date(data.timestamp).toISOString();
+	    if (data.building) {
+		info.status = 'in progress'
+	    } else if (data.result == 'SUCCESS') {
+		info.status = 'success'
+	    } else {
+		info.status = 'error'
+	    }
+	}
+	res.end(JSON.stringify(info));
+    });
+});
 
 module.exports = router;

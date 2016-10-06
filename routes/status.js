@@ -1,24 +1,15 @@
 
 var express = require('express');
 var router = express.Router();
-var r = require('rhub-node');
 var JenkinsLogStream = require('jenkins-log-stream');
 var get_user = require('../lib/get-user');
 var byline = require('byline');
 var LogFilter = require('../lib/filter-log');
 var SimpleLogFilter = require('../lib/filter-log').SimpleLogFilter;
+var re_status = require('../lib/re-status');
 const prettyMs = require('pretty-ms');
 
 var JENKINS_URL = process.env.JENKINS_URL;
-
-var re_status =
-    '(' +
-    '(' + r.valid_package_name + ')' +
-    '_' +
-    '(' + r.valid_package_version + ')' +
-    '[.]tar[.]gz' + '-' +
-    '([a-zA-Z0-9]+)' +
-    ')$';
 
 // This is the main page. The actual log will be in an IFrame
 
@@ -118,7 +109,15 @@ router.get(new RegExp('^/code/' + re_status), function(req, res) {
     };
 
     conn.build.get(name, 1, function(err, data) {
-	if (!err) {
+	res.set('Content-Type', 'application/json');
+	if (err) {
+	    res.status(404)
+		.end(JSON.stringify({
+		    "result": "error",
+		    "message": "Job not found"
+		}));
+
+	} else {
 	    info.duration = prettyMs(data.duration, { verbose: true });
 	    if (data.building) {
 		info.status = 'in progress'
@@ -128,8 +127,7 @@ router.get(new RegExp('^/code/' + re_status), function(req, res) {
 		info.status = 'error'
 	    }
 	}
-	res.set('Content-Type', 'application/json')
-	    .send(JSON.stringify(info));
+	res.send(JSON.stringify(info));
     });
 });
 
