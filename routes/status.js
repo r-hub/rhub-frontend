@@ -126,8 +126,8 @@ router.get(new RegExp('^/code/' + re_status), function(req, res) {
 	    } else {
 		info.status = 'error'
 	    }
+	    res.end(JSON.stringify(info));
 	}
-	res.send(JSON.stringify(info));
     });
 });
 
