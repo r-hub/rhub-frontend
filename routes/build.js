@@ -5,6 +5,7 @@ var re_status = require('../lib/re-status');
 var urls = require('../lib/urls');
 var db = require('nano')(urls.logdb);
 var update_log = require('../lib/update-log');
+var email_notification = require('../lib/email-notification');
 
 function keep(x) { return '(' + x + ')'; }
 
@@ -70,7 +71,10 @@ router.get(new RegExp(re), function(req, res) {
 	    update_log(id, state, time, body, function(err, body2) {
 		if (err) { return handle_error(err); }
 		db.insert(body2, function(err) {
-		    return handle_error(err);
+		    if (err) { return handle_error(err); }
+		    email_notification(body2, function(err) {
+			return handle_error(err);
+		    });
 		});
 	    });
 	}
