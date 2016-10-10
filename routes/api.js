@@ -146,8 +146,7 @@ function valid_submission(req, res, data) {
 router.get(new RegExp('^/status/' + re_status), function(req, res) {
     var name = req.params[0];
 
-    var jenkins_url = process.env.JENKINS_URL ||
-	'http://jenkins.rhub.me';
+    var jenkins_url = urls.jenkins;
     var jenkins = require('jenkins');
     var conn = jenkins(jenkins_url);
 

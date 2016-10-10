@@ -8,8 +8,7 @@ var LogFilter = require('../lib/filter-log');
 var SimpleLogFilter = require('../lib/filter-log').SimpleLogFilter;
 var re_status = require('../lib/re-status');
 const prettyMs = require('pretty-ms');
-
-var JENKINS_URL = process.env.JENKINS_URL;
+var urls = require('../lib/urls');
 
 // This is the main page. The actual log will be in an IFrame
 
@@ -37,7 +36,7 @@ router.get(new RegExp('^/' + re_status), function(req, res) {
 router.get(new RegExp('^/log/' + re_status), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
-	'baseUrl': JENKINS_URL,
+	'baseUrl': urls.jenkins,
 	'job': name
     });
     var log_by_line = byline(log);
@@ -57,7 +56,7 @@ router.get(new RegExp('^/log/' + re_status), function(req, res) {
 router.get(new RegExp('^/embedded/' + re_status), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
-	'baseUrl': JENKINS_URL,
+	'baseUrl': urls.jenkins,
 	'job': name
     });
     var log_by_line = byline(log);
@@ -71,7 +70,7 @@ router.get(new RegExp('^/embedded/' + re_status), function(req, res) {
 router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
-	'baseUrl': JENKINS_URL,
+	'baseUrl': urls.jenkins,
 	'job': name
     });
     var log_by_line = byline(log);
@@ -84,7 +83,7 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
 router.get(new RegExp('^/original/' + re_status), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
-	'baseUrl': JENKINS_URL,
+	'baseUrl': urls.jenkins,
 	'job': name
     });
     var log_by_line = byline(log);
@@ -97,8 +96,7 @@ router.get(new RegExp('^/original/' + re_status), function(req, res) {
 router.get(new RegExp('^/code/' + re_status), function(req, res) {
     var name = req.params[0];
 
-    var jenkins_url = process.env.JENKINS_URL ||
-	'http://jenkins.rhub.me';
+    var jenkins_url = urls.jenkins;
     var jenkins = require('jenkins');
     var conn = jenkins(jenkins_url);
 
