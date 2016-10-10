@@ -1,0 +1,20 @@
+
+Check result: {{ status }}
+
+Errors:
+
+{{#result.errors}}
+{{.}}
+{{/result.errors}}
+
+Warnings:
+
+{{#result.warnings}}
+{{.}}
+{{/result.warnings}}
+
+Notes:
+
+{{#result.notes}}
+{{.}}
+{{/result.notes}}

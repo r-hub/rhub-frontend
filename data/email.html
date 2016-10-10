@@ -1,0 +1,26 @@
+
+<h2>Check result: {{ status }}</h2>
+
+<h3>Errors:</h3>
+
+{{#result.errors}}
+<pre>
+{{.}}
+</pre>
+{{/result.errors}}
+
+<h3>Warnings:</h3>
+
+{{#result.warnings}}
+<pre>
+{{.}}
+</pre>
+{{/result.warnings}}
+
+<h3>Notes:</h3>
+
+{{#result.notes}}
+<pre>
+{{.}}
+</pre>
+{{/result.notes}}
