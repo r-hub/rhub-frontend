@@ -17,6 +17,7 @@ var login = require('./routes/login');
 var dokkucheck = require('./routes/check');
 var status = require('./routes/status');
 var api = require('./routes/api');
+var build = require('./routes/build');
 
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
@@ -96,6 +97,8 @@ app.use('/status', status);
 
 // The JSON API
 app.use('/api', api);
+
+app.use('/build', build);
 
 app.use('/file', express.static('uploads'));
 

@@ -12,7 +12,7 @@ var urls = require('../lib/urls');
 
 // This is the main page. The actual log will be in an IFrame
 
-router.get(new RegExp('^/' + re_status), function(req, res) {
+router.get(new RegExp('^/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var pkg = req.params[1];
     var version = req.params[2];
@@ -33,7 +33,7 @@ router.get(new RegExp('^/' + re_status), function(req, res) {
     );
 });
 
-router.get(new RegExp('^/log/' + re_status), function(req, res) {
+router.get(new RegExp('^/log/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
 	'baseUrl': urls.jenkins,
@@ -53,7 +53,7 @@ router.get(new RegExp('^/log/' + re_status), function(req, res) {
     log_by_line.pipe(logFilter).pipe(res)
 });
 
-router.get(new RegExp('^/embedded/' + re_status), function(req, res) {
+router.get(new RegExp('^/embedded/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
 	'baseUrl': urls.jenkins,
@@ -67,7 +67,7 @@ router.get(new RegExp('^/embedded/' + re_status), function(req, res) {
     log_by_line.pipe(logFilter).pipe(res)
 });
 
-router.get(new RegExp('^/raw/' + re_status), function(req, res) {
+router.get(new RegExp('^/raw/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
 	'baseUrl': urls.jenkins,
@@ -80,7 +80,7 @@ router.get(new RegExp('^/raw/' + re_status), function(req, res) {
     log_by_line.pipe(simpleLogFilter).pipe(res)
 });
 
-router.get(new RegExp('^/original/' + re_status), function(req, res) {
+router.get(new RegExp('^/original/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
 	'baseUrl': urls.jenkins,
@@ -93,7 +93,7 @@ router.get(new RegExp('^/original/' + re_status), function(req, res) {
     log.pipe(res)
 });
 
-router.get(new RegExp('^/code/' + re_status), function(req, res) {
+router.get(new RegExp('^/code/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
 
     var jenkins_url = urls.jenkins;

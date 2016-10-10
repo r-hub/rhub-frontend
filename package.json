@@ -25,6 +25,7 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "multiline": "^1.0.2",
+    "nano": "^6.2.0",
     "nodemailer": "^2.3.2",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",

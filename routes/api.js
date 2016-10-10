@@ -117,14 +117,15 @@ function valid_submission(req, res, data) {
 	    'pkg': data.package,
 	    'version': data.version,
 	    'logUrl': logUrl,
-	    'submitted': Date(),
+	    'submitted': new Date().toISOString(),
 	    'platform': platform.name,
 	    'ostype': platform["os-type"],
 	    'rversion': platform.rversion,
 	    'image': platform["docker-image"],
 	    'platforminfo': platform,
 	    'checkArgs': data.check_args || "",
-	    'env': data.env || { }
+	    'env': data.env || { },
+	    'builder': 'https://' + req.get('host')
 	};
 
 	var full_filename = __dirname + '/../uploads/' + filename;
@@ -144,7 +145,7 @@ function valid_submission(req, res, data) {
     });
 }
 
-router.get(new RegExp('^/status/' + re_status), function(req, res) {
+router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
 
     var jenkins_url = urls.jenkins;
