@@ -3,7 +3,6 @@ var router = express.Router();
 var multer = require('multer');
 var rhub = require('rhub-node');
 var create_job = require('../lib/create-job');
-var create_cran_job = require('../lib/create-cran-job');
 var queue_job = require('../lib/queue-job');
 var get_user = require('../lib/get-user');
 var auth_ok = require('../lib/auth-ok');
@@ -67,24 +66,5 @@ router.get(
 	}
     }
 );
-
-router.post(
-    new RegExp('^/cran/(' + rhub.valid_package_name + ')$'),
-    function(req, res) {
-	var package = req.params[0];
-	create_cran_job(package, req, function(err, job) {
-	    if (err) {
-		res.render(
-		    "badpackage",
-		    { 'error': err, user: get_user(req) }
-		);
-	    } else {
-		queue_job(job);
-		job.user = get_user(req);
-		res.redirect("/status/" + job.buildId);
-	    }
-	})
-    }
-)
 
 module.exports = router;
