@@ -1,26 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ title }}</title>
+    <link href="styles.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
 
-<h2>Check result: {{ status }}</h2>
+  <body itemscope itemtype="http://schema.org/EmailMessage">
 
-<h3>Errors:</h3>
+    <table class="body-wrap">
+      <tr>
+	<td></td>
+	<td class="container" width="600">
+	  <div class="content">
+	    <table class="main" width="100%" cellpadding="0" cellspacing="0">
+	      <tr>
+		{{#bgIsRed}}
+		<td class="alert alert-bad">{{ header }}</td>
+		{{/bgIsRed}}
+		{{#bgIsOrange}}
+		<td class="alert alert-warning">{{ header }}</td>
+		{{/bgIsOrange}}
+		{{#bgIsGreen}}
+		<td class="alert alert-good">{{ header }}</td>
+		{{/bgIsGreen}}
+	      </tr>
+	      <tr>
+		<td class="content-wrap">
+		  <table width="100%" cellpadding="0" cellspacing="0">
+		    <tr>
+		      <td class="content-block">
+			<table width="100%" callpadding="0" cellspacing="0">
+			  <tr>
+			    <td><strong>Build ID:</strong></td>
+			    <td><code>{{ id }}</code></td>
+			  </tr>
+			  <tr>
+			    <td><strong>Platform:</strong></td>
+			    <td>{{ platform }}</td>
+			  </tr>
+			  <tr>
+			    <td><strong>Submitted:</strong></td>
+			    <td>{{ submitted }}</td>
+			  </tr>
+			  <tr>
+			    <td><strong>Build time:</strong></td>
+			    <td>{{ buildTime }}</td>
+			  </tr>
+			</table>
+		      </td>
+		    </tr>
+		    <tr>
+		      <td class="content-block">
+			{{# anyErrors }}
+			<h3>ERRORS:</h3>
+			{{# errors }}
+			<p class="code"><pre>* {{.}}</pre></p>
+			{{/ errors}}
+			{{/ anyErrors }}
 
-{{#result.errors}}
-<pre>
-{{.}}
-</pre>
-{{/result.errors}}
+			{{# anyWarnings }}
+			<h3>WARNINGS:</h3>
+			{{# warnings }}
+			<p class="code"><pre>* {{.}}</pre></p>
+			{{/ warnings }}
+			{{/ anyWarnings }}
 
-<h3>Warnings:</h3>
+			{{# anyNotes }}
+			<h3>NOTES:</h3>
+			{{# notes }}
+			<p class="code"><pre>* {{.}}</pre></p>
+			{{/ notes }}
+			{{/ anyNotes }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td class="content-block">
+			See the full build log: <a href="{{ logHtml }}">HTML</a>, <a href="{{ logText }}">text</a>.
+		      </td>
+		    </tr>
+		    <tr>
+		      <td class="content-block">
+			Thank You for using the R-hub builder.
+		      </td>
+		    </tr>
+		  </table>
+		</td>
+	      </tr>
+	    </table>
+	    <div class="footer">
+	      <table width="100%">
+		<tr>
+		  <td class="aligncenter content-block">(c) 2016 The R Consortium</td>
+		</tr>
+	      </table>
+	    </div></div>
+	</td>
+	<td></td>
+      </tr>
+    </table>
 
-{{#result.warnings}}
-<pre>
-{{.}}
-</pre>
-{{/result.warnings}}
-
-<h3>Notes:</h3>
-
-{{#result.notes}}
-<pre>
-{{.}}
-</pre>
-{{/result.notes}}
+  </body>
+</html>

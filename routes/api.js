@@ -10,7 +10,6 @@ var queue_job = require('../lib/queue-job');
 var fs = require('fs');
 var re_status = require('../lib/re-status');
 var got = require('got');
-const prettyMs = require('pretty-ms');
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')

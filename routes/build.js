@@ -60,7 +60,8 @@ router.get(new RegExp(re), function(req, res) {
 	// We handle the simple 'start' update here
 	if (state == "in-progress") {
 	    body.status = state;
-	    body.started = time;
+	    // This is to use the same machine's clock
+	    body.started = new Date();
 	    db.insert(body, function(err) {
 		return handle_error(err);
 	    });
