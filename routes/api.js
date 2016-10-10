@@ -9,6 +9,7 @@ var get_image = require('../lib/get-image');
 var queue_job = require('../lib/queue-job');
 var fs = require('fs');
 var re_status = require('../lib/re-status');
+var got = require('got');
 const prettyMs = require('pretty-ms');
 
 router.get('/platform/list', function(req, res) {
@@ -148,38 +149,31 @@ function valid_submission(req, res, data) {
 router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
 
-    var jenkins_url = urls.jenkins;
-    var jenkins = require('jenkins');
-    var conn = jenkins(jenkins_url);
+    var fullurl = urls.logdb + '/' + name;
+    var _url = url.parse(fullurl);
+    var dburl = _url.protocol + '//' + _url.host + _url.path;
 
-    var info = {
-	'status': 'preparing',
-	'submitted': 'moments ago',
-	'duration': '...'
-    };
+    res.set('Content-Type', 'application/json; charset=utf-8');
 
-    conn.build.get(name, 1, function(err, data) {
-	res.set('Content-Type', 'application/json; charset=utf-8');
-	if (err) {
-	    res.status(404)
-		.end(JSON.stringify({
-		    "result": "error",
-		    "message": "Job not found"
-		}));
-
-	} else {
-	    info.duration = prettyMs(data.duration, { verbose: true });
-	    info.submitted = new Date(data.timestamp).toISOString();
-	    if (data.building) {
-		info.status = 'in progress'
-	    } else if (data.result == 'SUCCESS') {
-		info.status = 'success'
-	    } else {
-		info.status = 'error'
+    got.get(
+	dburl,
+	{ auth: _url.auth },
+	function(err, response) {
+	    if (err) {
+		var msg = { 'status': 'error',
+			    'message': 'Build not found' };
+		return res.set(404)
+		    .end(JSON.stringify(msg));
 	    }
+
+	    var info = {
+		'status': response.status,
+		'submitted': response.submitted
+	    };
+
+	    res.end(JSON.stringify(info));
 	}
-	res.end(JSON.stringify(info));
-    });
+    );
 });
 
 module.exports = router;
