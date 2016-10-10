@@ -1,20 +1,39 @@
 
-Check result: {{ status }}
+{{{ title }}}
 
-Errors:
+Build ID:   {{{ id }}}
+Platform:   {{{ platform }}}
+Submittted: {{{ submitted }}}
+Build time: {{{ buildTime }}}
 
-{{#result.errors}}
-{{.}}
-{{/result.errors}}
+{{# anyErrors }}
+ERRORS:
+-------
+{{# errors }}
+* {{.}}
+{{/ errors}}
+{{/ anyErrors }}
 
-Warnings:
+{{# anyWarnings }}
+WARNINGS:
+---------
+{{# warnings }}
+* {{.}}
+{{/ warnings }}
+{{/ anyWarnings }}
 
-{{#result.warnings}}
-{{.}}
-{{/result.warnings}}
+{{# anyNotes }}
+NOTES:
+------
+{{# notes }}
+* {{.}}
+{{/ notes }}
+{{/ anyNotes }}
 
-Notes:
+See the full build log:
+HTML: {{ logHtml }}
+Text: {{ logText }}
 
-{{#result.notes}}
-{{.}}
-{{/result.notes}}
+Thank You for using the R-hub builder.
+
+(c) 2016 The R Consortium
