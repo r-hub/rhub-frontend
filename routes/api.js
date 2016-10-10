@@ -122,6 +122,7 @@ function valid_submission(req, res, data) {
 	    'ostype': platform["os-type"],
 	    'rversion': platform.rversion,
 	    'image': platform["docker-image"],
+	    'platforminfo': platform,
 	    'checkArgs': data.check_args || "",
 	    'env': data.env || { }
 	};
