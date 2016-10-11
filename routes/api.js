@@ -10,6 +10,7 @@ var queue_job = require('../lib/queue-job');
 var fs = require('fs');
 var re_status = require('../lib/re-status');
 var got = require('got');
+var url = require('url');
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -165,12 +166,7 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
 		    .end(JSON.stringify(msg));
 	    }
 
-	    var info = {
-		'status': response.status,
-		'submitted': response.submitted
-	    };
-
-	    res.end(JSON.stringify(info));
+	    res.end(response);
 	}
     );
 });
