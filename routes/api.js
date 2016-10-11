@@ -171,4 +171,66 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     );
 });
 
+router.post('/list', function(req, res) {
+
+    var data = req.body;
+
+    if (! data.email || ! data.token) {
+	return res.set('Content-Type', 'application/json; charset=utf-8')
+	    .status(400)
+	    .end(JSON.stringify({
+		"result": "error",
+		"message": "Invalid data, need 'email' and 'token'" }));
+    }
+
+    client.get(data.email, function(err, token) {
+	if (err) { return internal_error(res); }
+	if (data.token != token) {
+	    return res.set('Content-Type', 'application/json; charset=utf-8')
+		.status(401)
+		.end(JSON.stringify({
+		    "result": "error",
+		    "message": "Email address not validated"
+		}));
+	}
+
+	if (data.package) {
+	    list_email_package(req, res, data.email, data.package);
+	} else {
+	    list_email(req, res, data.email);
+	}
+    });
+});
+
+function list_email(req, res, email) {
+
+    var fullurl = urls.logdb + '/_design/app/_rewrite/-/email/' +
+	encodeURIComponent(email) + '?limit=20';
+    var _url = url.parse(fullurl);
+    var dburl = _url.protocol + '//' + _url.host + _url.path;
+
+    got.get(dburl, { auth: _url.auth }, function(err, response) {
+	if (err) { return internal_error(res); }
+
+	var list = JSON.parse(response).rows;
+	res.end(JSON.stringify(list));
+    });
+}
+
+function list_email_package(req, res, email, pkg) {
+
+    var fullurl = urls.logdb + '/_design/app/_rewrite/-/package/' +
+	encodeURIComponent(email) + '/' + encodeURIComponent(pkg) +
+	'?limit=20';
+    var _url = url.parse(fullurl);
+    var dburl = _url.protocol + '//' + _url.host + _url.path;
+
+    got.get(dburl, { auth: _url.auth }, function(err, response) {
+	if (err) { return internal_error(res); }
+
+	var list = JSON.parse(response).rows;
+	res.end(JSON.stringify(list));
+    });
+}
+
 module.exports = router;
