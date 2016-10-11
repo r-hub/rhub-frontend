@@ -212,7 +212,9 @@ function list_email(req, res, email) {
     got.get(dburl, { auth: _url.auth }, function(err, response) {
 	if (err) { return internal_error(res); }
 
-	var list = JSON.parse(response).rows;
+	var list = JSON.parse(response).rows.map(
+	    function(x) { return x.value; }
+	);
 	res.set('Content-Type', 'application/json; charset=utf-8')
 	    .end(JSON.stringify(list));
     });
@@ -229,7 +231,9 @@ function list_email_package(req, res, email, pkg) {
     got.get(dburl, { auth: _url.auth }, function(err, response) {
 	if (err) { return internal_error(res); }
 
-	var list = JSON.parse(response).rows;
+	var list = JSON.parse(response).rows.map(
+	    function(x) { return x.value; }
+	);
 	res.set('Content-Type', 'application/json; charset=utf-8')
 	    .end(JSON.stringify(list));
     });
