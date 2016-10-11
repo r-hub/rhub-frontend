@@ -3,7 +3,7 @@
 
 Build ID:   {{{ id }}}
 Platform:   {{{ platform }}}
-Submittted: {{{ submitted }}}
+Submitted:  {{{ submitted }}}
 Build time: {{{ buildTime }}}
 
 {{# anyErrors }}
