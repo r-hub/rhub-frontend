@@ -213,7 +213,8 @@ function list_email(req, res, email) {
 	if (err) { return internal_error(res); }
 
 	var list = JSON.parse(response).rows;
-	res.end(JSON.stringify(list));
+	res.set('Content-Type', 'application/json; charset=utf-8')
+	    .end(JSON.stringify(list));
     });
 }
 
@@ -229,7 +230,8 @@ function list_email_package(req, res, email, pkg) {
 	if (err) { return internal_error(res); }
 
 	var list = JSON.parse(response).rows;
-	res.end(JSON.stringify(list));
+	res.set('Content-Type', 'application/json; charset=utf-8')
+	    .end(JSON.stringify(list));
     });
 }
 
