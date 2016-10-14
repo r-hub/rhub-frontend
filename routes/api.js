@@ -125,7 +125,7 @@ function valid_submission(req, res, data) {
 	    'image': platform["docker-image"],
 	    'platforminfo': platform,
 	    'checkArgs': data.check_args || "",
-	    'env': data.env || { },
+	    'envVars': data.env || { },
 	    'builder': 'https://' + req.get('host')
 	};
 
