@@ -10,7 +10,7 @@ Build time: {{{ buildTime }}}
 ERRORS:
 -------
 {{# errors }}
-* {{.}}
+* {{{.}}}
 {{/ errors}}
 {{/ anyErrors }}
 
@@ -18,7 +18,7 @@ ERRORS:
 WARNINGS:
 ---------
 {{# warnings }}
-* {{.}}
+* {{{.}}}
 {{/ warnings }}
 {{/ anyWarnings }}
 
@@ -26,13 +26,13 @@ WARNINGS:
 NOTES:
 ------
 {{# notes }}
-* {{.}}
+* {{{.}}}
 {{/ notes }}
 {{/ anyNotes }}
 
 See the full build log:
-HTML: {{ logHtml }}
-Text: {{ logText }}
+HTML: {{{ logHtml }}}
+Text: {{{ logText }}}
 
 Thank You for using the R-hub builder.
 
