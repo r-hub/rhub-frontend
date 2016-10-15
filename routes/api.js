@@ -11,6 +11,7 @@ var fs = require('fs');
 var re_status = require('../lib/re-status');
 var got = require('got');
 var url = require('url');
+var jenkins = require('jenkins')( { baseUrl: urls.jenkins });
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -64,14 +65,16 @@ router.post('/check/submit', function(req, res) {
     }
 
     client.get(data.email, function(err, token) {
-	if (err) { return internal_error(res); }
+	if (err) { return internal_error(res, "Email not validated"); }
 	if (data.token == token) {
 	    return valid_submission(req, res, data);
 	}
 	client.get(data.email + '-pending', function(err, token2) {
 	    if (data.token == token2) {
 		client.set(data.email, token2, function(err) {
-		    if (err) { return internal_error(res); }
+		    if (err) {
+			return internal_error(res, "Email not validated");
+		    }
 		    return valid_submission(req, res, data);
 		});
 	    } else {
@@ -86,12 +89,13 @@ router.post('/check/submit', function(req, res) {
     });
 });
 
-function internal_error(res) {
+function internal_error(res, message) {
+    var msg = message || "Cannot send email";
     return res.set('Content-Type', 'application/json; charset=utf-8')
 	.status(500)
 	.end(JSON.stringify({
 	    "result": "error",
-	    "message": "Cannot send email"
+	    "message": msg
 	}));
 }
 
@@ -131,7 +135,7 @@ function valid_submission(req, res, data) {
 
 	var full_filename = __dirname + '/../uploads/' + filename;
 	fs.writeFile(full_filename, data.file, 'base64', function(err) {
-	    if (err) { return internal_error(res); }
+	    if (err) { return internal_error(res, "Cannot upload file"); }
 	    queue_job(job);
 	    res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(201)
@@ -184,7 +188,7 @@ router.post('/list', function(req, res) {
     }
 
     client.get(data.email, function(err, token) {
-	if (err) { return internal_error(res); }
+	if (err) { return internal_error(res, "Email not validated"); }
 	if (data.token != token) {
 	    return res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(401)
@@ -210,7 +214,7 @@ function list_email(req, res, email) {
     var dburl = _url.protocol + '//' + _url.host + _url.path;
 
     got.get(dburl, { auth: _url.auth }, function(err, response) {
-	if (err) { return internal_error(res); }
+	if (err) { return internal_error(res, "Email not validated"); }
 
 	var list = JSON.parse(response).rows.map(
 	    function(x) { return x.value; }
@@ -229,7 +233,7 @@ function list_email_package(req, res, email, pkg) {
     var dburl = _url.protocol + '//' + _url.host + _url.path;
 
     got.get(dburl, { auth: _url.auth }, function(err, response) {
-	if (err) { return internal_error(res); }
+	if (err) { return internal_error(res, "Cannot get statuses"); }
 
 	var list = JSON.parse(response).rows.map(
 	    function(x) { return x.value; }
@@ -238,5 +242,43 @@ function list_email_package(req, res, email, pkg) {
 	    .end(JSON.stringify(list));
     });
 }
+
+router.get(
+    new RegExp('^/livelog/text/' + re_status + '$'),
+    function(req, res) {
+	var name = req.params[0];
+	var start = req.query.start || 0;
+
+	var options = { 'name': name,
+			'number': 1,
+			'start': start,
+			'meta': true };
+
+	jenkins.build.log(options, function(err, data) {
+	    if (err) { console.log(err); return internal_error(res, "Cannot get logs"); }
+
+	    if (data.more) {
+		var rurl = 'https://' + req.get('Host') +
+		    req.baseUrl + req.url;
+		var moreUrl = url.parse(rurl, true);
+		moreUrl.query = moreUrl.query || { };
+		moreUrl.query.start = data.size;
+		moreUrl.path = moreUrl.href = moreUrl.search = null;
+		data.moreUrl = url.format(moreUrl);
+	    }
+
+	    if (data.text) {
+		data.text = data.text.replace(/\r\n/g, "\n");
+		data.text = data.text.replace(/\n$/, "");
+		data.text = data.text.split("\n");
+	    } else {
+		data.text = [];
+	    }
+
+	    res.set('Content-Type', 'application/json; charset=utf-8')
+		.end(JSON.stringify(data));
+	});
+    }
+);
 
 module.exports = router;
