@@ -12,6 +12,8 @@ var re_status = require('../lib/re-status');
 var got = require('got');
 var url = require('url');
 var jenkins = require('jenkins')( { baseUrl: urls.jenkins });
+var isArray = require('is-array');
+var async = require('async');
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -102,18 +104,54 @@ function internal_error(res, message) {
 function valid_submission(req, res, data) {
 
     var filename = uuid.v4().replace(/-/g, "");
+    var full_filename = __dirname + '/../uploads/' + filename;
+
+    fs.writeFile(full_filename, data.file, 'base64', function(err) {
+	if (err) { return internal_error(res, "Cannot upload file"); }
+
+	var platform = data.platform;
+	if (! isArray(platform)) { data.platform = [ platform ]; }
+	async.map(
+	    data.platform,
+	    function(p, cb) {
+		var hash = uuid.v4().replace(/-/g, "");
+		valid_submission1(hash, p, data, req, filename, cb);
+	    },
+	    function(err, results) {
+		if (err) { return internal_error(res, err); }
+		if (! isArray(platform)) {
+		    results = results[0];
+		} else {
+		    var d = { };
+		    for (i in results) { d[platform[i]] = results[i]; }
+		    results = d;
+		}
+		res.set('Content-Type', 'application/json; charset=utf-8')
+		    .status(201)
+		    .end(JSON.stringify(results));
+	    }
+	);
+    });
+}
+
+function valid_submission1(hash, platform, data_orig, req, filename, callback) {
+
+    var data = data_orig;
+    data.platform = platform;
+
     var originalname = data.package + '_' + data.version + '.tar.gz';
+    var id = originalname + '-' + hash;
     var url = req.protocol + '://' + req.get('host') + '/file/' + filename;
-    var logUrl = '/status/' + originalname + '-' + filename;
-    var rawLogUrl = '/status/original/' + originalname + '-' + filename;
+    var logUrl = '/status/' + id;
+    var rawLogUrl = '/status/original/' + id;
     var fullLogUrl = req.protocol + '://' + req.get('host') + logUrl;
     var fullRawLogUrl = req.protocol + '://' + req.get('host') + rawLogUrl;
 
     get_image(data.platform, function(err, platform) {
-	if (err) { return internal_error(res, "Invalid platform"); }
+	if (err) { return callback("Invalid platform"); }
 
 	var job = {
-	    'buildId': originalname + '-' + filename,
+	    'buildId': id,
 	    'package': originalname,
 	    'filename': filename,
 	    'url': url,
@@ -133,20 +171,17 @@ function valid_submission(req, res, data) {
 	    'builder': 'https://' + req.get('host')
 	};
 
-	var full_filename = __dirname + '/../uploads/' + filename;
-	fs.writeFile(full_filename, data.file, 'base64', function(err) {
-	    if (err) { return internal_error(res, "Cannot upload file"); }
-	    queue_job(job);
-	    res.set('Content-Type', 'application/json; charset=utf-8')
-		.status(201)
-		.end(JSON.stringify({
-		    "result": "submitted",
-		    "email": data.email,
-		    "id": job.buildId,
-		    "status-url": fullLogUrl,
-		    "log-url": fullRawLogUrl
-		}));
-	});
+	queue_job(job);
+
+	var result = {
+	    "result": "submitted",
+	    "email": data.email,
+	    "id": job.buildId,
+	    "status-url": fullLogUrl,
+	    "log-url": fullRawLogUrl
+	};
+
+	callback(null, result);
     });
 }
 
