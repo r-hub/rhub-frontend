@@ -14,6 +14,7 @@ var url = require('url');
 var jenkins = require('jenkins')( { baseUrl: urls.jenkins });
 var isArray = require('is-array');
 var async = require('async');
+var db = require('nano')(urls.logdb);
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -185,6 +186,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
     });
 }
 
+// This is for compatibility
 router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
 
@@ -195,19 +197,47 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8');
 
     got.get(
-	dburl,
-	{ auth: _url.auth },
-	function(err, response) {
-	    if (err) {
-		var msg = { 'status': 'error',
-			    'message': 'Build not found' };
-		return res.set(404)
-		    .end(JSON.stringify(msg));
-	    }
+        dburl,
+        { auth: _url.auth },
+        function(err, response) {
+            if (err) {
+                var msg = { 'status': 'error',
+                            'message': 'Build not found' };
+                return res.set(404)
+                    .end(JSON.stringify(msg));
+            }
 
-	    res.end(response);
-	}
+            res.end(response);
+        }
     );
+});
+
+router.post('/status', function(req, res) {
+
+    var data = req.body;
+
+    res.set('Content-Type', 'application/json; charset=utf-8');
+
+    if (! data.id || !isArray(data.id)) {
+	return res.status(400)
+	    .end(JSON.stringify({
+		"result": "error",
+		"message": "Invalid data, need 'id', a list of ids" }));
+    }
+
+    var qs = { keys: data.id };
+
+    db.fetch(qs, function(err, data) {
+	if (err) {
+	    var msg = { 'status': 'error',
+			'message': 'Build not found: ' + err };
+	    return res.set(404)
+		.end(JSON.stringify(msg));
+	}
+
+	var docs = data.rows.map(function(x) { return x.doc; });
+	res.end(JSON.stringify(docs));
+    });
 });
 
 router.post('/list', function(req, res) {
