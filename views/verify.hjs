@@ -2,7 +2,7 @@
 {{< layout}}
 
 {{$ extraheader }}
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
       rel="stylesheet"/>
 {{/ extraheader }}
 
@@ -97,7 +97,7 @@
 {{/content}}
 
 {{$ scripts }}
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js">
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
 </script>
 
 <script>
