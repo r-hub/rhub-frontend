@@ -33,6 +33,7 @@ NOTES:
 See the full build log:
 HTML: {{{ logHtml }}}
 Text: {{{ logText }}}
+Artifacts: {{{ artifactLink }}}
 
 Thank You for using the R-hub builder.
 
