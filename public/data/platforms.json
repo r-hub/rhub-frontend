@@ -179,6 +179,18 @@
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008"
-    }
+    },
 
+    {
+	"name": "macos-mavericks-release",
+	"description": "macOS 10.9 Mavericks, R-release",
+	"cran-name": "r-release-osx-x86_64-mavericks",
+	"rversion": "r-release",
+	"os-type": "macOS",
+	"cpu-type": "x86_64",
+	"os-info": "Mac OS X 10.9.5 13F1911",
+	"compilers": "Apple LLVM version 6.0 (clang-600.0.57); GNU Fortran 4.2.3",
+	"docker-image": null,
+	"sysreqs-platform": "osx-x86_64-clang"
+    }
 ]
