@@ -192,5 +192,18 @@
 	"compilers": "Apple LLVM version 6.0 (clang-600.0.57); GNU Fortran 4.2.3",
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang"
+    },
+
+    {
+	"name": "macos-elcapitan-devel",
+	"description": "macOS 10.11 El Capitan, R-devel",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "macOS",
+	"cpu-type": "x86_64",
+	"os-info": "Mac OS X 10.11.6 15G1217",
+	"compilers": "Apple LLVM version 8.0 (clang-800.0.42.1); GNU Fortran 4.2.3",
+	"docker-image": null,
+	"sysreqs-platform": "osx-x86_64-clang"
     }
 ]
