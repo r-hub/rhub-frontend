@@ -182,10 +182,10 @@
     },
 
     {
-	"name": "macos-mavericks-release",
-	"description": "macOS 10.9 Mavericks, R-release",
-	"cran-name": "r-release-osx-x86_64-mavericks",
-	"rversion": "r-release",
+	"name": "macos-mavericks-oldrel",
+	"description": "macOS 10.9 Mavericks, R-oldrel",
+	"cran-name": "r-oldrel-osx-x86_64",
+	"rversion": "r-oldrel",
 	"os-type": "macOS",
 	"macos-version": "mavericks",
 	"cpu-type": "x86_64",
@@ -196,10 +196,10 @@
     },
 
     {
-	"name": "macos-elcapitan-devel",
-	"description": "macOS 10.11 El Capitan, R-devel",
-	"cran-name": null,
-	"rversion": "r-devel",
+	"name": "macos-elcapitan-release",
+	"description": "macOS 10.11 El Capitan, R-release",
+	"cran-name": "r-release-osx-x86_64",
+	"rversion": "r-release",
 	"os-type": "macOS",
 	"macos-version": "elcapitan",
 	"cpu-type": "x86_64",
