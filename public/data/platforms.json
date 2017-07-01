@@ -183,7 +183,7 @@
 
     {
 	"name": "macos-mavericks-oldrel",
-	"description": "macOS 10.9 Mavericks, R-oldrel",
+	"description": "macOS 10.9 Mavericks, R-oldrel (experimental)",
 	"cran-name": "r-oldrel-osx-x86_64",
 	"rversion": "r-oldrel",
 	"os-type": "macOS",
@@ -197,7 +197,7 @@
 
     {
 	"name": "macos-elcapitan-release",
-	"description": "macOS 10.11 El Capitan, R-release",
+	"description": "macOS 10.11 El Capitan, R-release (experimental)",
 	"cran-name": "r-release-osx-x86_64",
 	"rversion": "r-release",
 	"os-type": "macOS",
