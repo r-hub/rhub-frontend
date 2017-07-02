@@ -207,5 +207,18 @@
 	"compilers": "Apple LLVM version 8.0 (clang-800.0.42.1); GNU Fortran 4.2.3",
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang"
+    },
+
+    {
+	"name": "ubuntu-rchk",
+	"description": "Ubuntu Linux 16.04 LTS, R-devel with rchk",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Ubuntu 16.04 LTS",
+	"compilers": "clang 3.8.0-2ubuntu4",
+	"docker-image": "ubuntu-rchk",
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
     }
 ]
