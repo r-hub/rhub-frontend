@@ -2,37 +2,54 @@
     <h1 class="text-center">The r-hub builder</h1>
 </div></div>
 
+<style>
+.tooltip-inner {
+    min-width: 150px; //the minimum width
+}
+</style>
+
 <form role="form" class="text-center" action="/job"
       method="POST" enctype="multipart/form-data">
-  
+
   <div class="row">
-    
+
     <div class="col-lg-10">
-      
+
       <div class="form-group">
-	
+
 	<div class="input-group">
           <span class="input-group-btn">
-	    <span class="btn btn-primary btn-file btn-lg">
+	    <button id="selectfilebutton" class="btn btn-primary btn-file btn-lg"
+		  data-toggle="tooltip" data-placement="bottom"
+		  title="1. Choose a source R package (.tar.gz)">
 	      Select R package&hellip; <input type="file" name="package">
-	    </span>
+	    </button>
           </span>
           <input type="text" class="form-control input-lg" readonly>
           <span class="input-group-btn">
-	    <button class="btn btn-success btn-lg btn-file" type="submit">
+	    <button class="btn btn-success btn-lg btn-file" type="submit"
+		  data-toggle="tooltip" data-placement="bottom"
+		  title="2. Upload file and start the check">
 	      <span class="glyphicon glyphicon-upload"></span>
 	    </button>
 	  </span>
 	</div>
-	
+
       </div> <!-- form-group -->
-      
+
+      <div><p>
+
+
+      </p></div>
+
     </div> <!-- col-lg-10 -->
-    
+
     <div class="col-lg-2">
-      <a href="/advanced" class="btn btn-lg btn-default">Advanced</a>
+      <a href="/advanced" class="btn btn-lg btn-default"
+	 data-toggle="tooltip" data-placement="right"
+	 title="Choose platform or select alternate email address">Advanced</a>
     </div>
-    
+
   </div> <!-- row -->
-  
+
 </form>
