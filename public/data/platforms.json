@@ -126,7 +126,8 @@
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
 	"docker-image": "rocker-gcc-san",
-	"sysreqs-platform": "linux-x86_64-debian-gcc"
+	"sysreqs-platform": "linux-x86_64-debian-gcc",
+        "output-parser": "sanitizers"
     },
 
     {
@@ -219,6 +220,7 @@
 	"os-info": "Ubuntu 16.04 LTS",
 	"compilers": "clang 3.8.0-2ubuntu4",
 	"docker-image": "ubuntu-rchk",
-	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
+        "output-parser": "rchk"
     }
 ]
