@@ -9,7 +9,8 @@
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-devel",
-	"sysreqs-platform": "linux-x86_64-debian-gcc"
+	"sysreqs-platform": "linux-x86_64-debian-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -22,7 +23,8 @@
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-release",
-	"sysreqs-platform": "linux-x86_64-debian-gcc"
+	"sysreqs-platform": "linux-x86_64-debian-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -35,7 +37,8 @@
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-patched",
-	"sysreqs-platform": "linux-x86_64-debian-gcc"
+	"sysreqs-platform": "linux-x86_64-debian-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -48,7 +51,8 @@
 	"os-info": "Fedora 24",
 	"compilers": "GCC 6.1.1",
 	"docker-image": "fedora-gcc-devel",
-	"sysreqs-platform": "linux-x86_64-fedora-gcc"
+	"sysreqs-platform": "linux-x86_64-fedora-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -61,7 +65,8 @@
 	"os-info": "Fedora 24",
 	"compilers": "clang version 3.8.0; GNU Fortran 6.1.1",
 	"docker-image": "fedora-clang-devel",
-	"sysreqs-platform": "linux-x86_64-fedora-clang"
+	"sysreqs-platform": "linux-x86_64-fedora-clang",
+	"categories": ["Linux"]
     },
 
     {
@@ -74,7 +79,8 @@
 	"os-info": "Ubuntu 16.04 LTS",
 	"compilers": "GCC 5.3.1",
 	"docker-image": "ubuntu-gcc-devel",
-	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -87,7 +93,8 @@
 	"os-info": "Ubuntu 16.04 LTS",
 	"compilers": "GCC 5.3.1",
 	"docker-image": "ubuntu-gcc-release",
-	"sysreqs-platform": "linux-x86_64-ubuntu-gcc"
+	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
+	"categories": ["Linux"]
     },
 
     {
@@ -100,7 +107,8 @@
 	"os-info": "CentOS 6",
 	"compilers": "GCC 4.4.x",
 	"docker-image": "centos6-epel",
-	"sysreqs-platform": "linux-x86_64-centos6-epel"
+	"sysreqs-platform": "linux-x86_64-centos6-epel",
+	"categories": ["Linux"]
     },
 
     {
@@ -113,7 +121,8 @@
 	"os-info": "CentOS 6",
 	"compilers": "GCC 5.2.1",
 	"docker-image": "centos6-epel-rdt",
-	"sysreqs-platform": "linux-x86_64-centos6-epel"
+	"sysreqs-platform": "linux-x86_64-centos6-epel",
+	"categories": ["Linux"]
     },    
 
     {
@@ -127,7 +136,8 @@
 	"compilers": "GCC 5.4.0 (Debian 5.4.0-4)",
 	"docker-image": "rocker-gcc-san",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
-        "output-parser": "sanitizers"
+        "output-parser": "sanitizers",
+	"categories": ["Checks for compiled code"]
     },
 
     {
@@ -140,7 +150,8 @@
 	"os-info": "Windows Server 2008 R2 SP1",
 	"compilers": "GCC 4.6.3, Rtools 3.3",
 	"docker-image": null,
-	"sysreqs-platform": "windows-2008"
+	"sysreqs-platform": "windows-2008",
+	"categories": ["Windows"]
     },
 
     {
@@ -153,7 +164,8 @@
 	"os-info": "Windows Server 2008 R2 SP1",
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
-	"sysreqs-platform": "windows-2008"
+	"sysreqs-platform": "windows-2008",
+	"categories": ["Windows"]
     },
 
     {
@@ -166,7 +178,8 @@
 	"os-info": "Windows Server 2008 R2 SP1",
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
-	"sysreqs-platform": "windows-2008"
+	"sysreqs-platform": "windows-2008",
+	"categories": ["Windows"]
     },
 
     {
@@ -179,7 +192,8 @@
 	"os-info": "Windows Server 2008 R2 SP1",
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
-	"sysreqs-platform": "windows-2008"
+	"sysreqs-platform": "windows-2008",
+	"categories": ["Windows"]
     },
 
     {
@@ -193,7 +207,8 @@
 	"os-info": "Mac OS X 10.9.5 13F1911",
 	"compilers": "Apple LLVM version 6.0 (clang-600.0.57); GNU Fortran 4.2.3",
 	"docker-image": null,
-	"sysreqs-platform": "osx-x86_64-clang"
+	"sysreqs-platform": "osx-x86_64-clang",
+	"categories": ["macOS"]
     },
 
     {
@@ -207,7 +222,8 @@
 	"os-info": "Mac OS X 10.11.6 15G1217",
 	"compilers": "Apple LLVM version 8.0 (clang-800.0.42.1); GNU Fortran 4.2.3",
 	"docker-image": null,
-	"sysreqs-platform": "osx-x86_64-clang"
+	"sysreqs-platform": "osx-x86_64-clang",
+	"categories": ["macOS"]
     },
 
     {
@@ -221,6 +237,7 @@
 	"compilers": "clang 3.8.0-2ubuntu4",
 	"docker-image": "ubuntu-rchk",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
-        "output-parser": "rchk"
+        "output-parser": "rchk",
+	"categories": ["Checks for compiled code"]
     }
 ]

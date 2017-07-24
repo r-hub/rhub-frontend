@@ -5,45 +5,58 @@
 </div></div>
 
 <div class="row">
-  <div class="col-lg-6">
-    <form role="form" action="/job"
-	  method="POST" enctype="multipart/form-data">
+  <form role="form" action="/job"
+	method="POST" enctype="multipart/form-data">
 
-      <p class="help-block">Select the R package to upload</p>
+    <div class="col-lg-6">
+      <div class="well">
+	<p class="help-block">Select the R package to upload</p>
 
-      <div class="form-group">
-	<div class="input-group">
-          <span class="input-group-btn">
-	    <span class="btn btn-default btn-file btn-lg">
-	      Select R package&hellip; <input type="file" name="package">
-	    </span>
-          </span>
-          <input type="text" class="form-control input-lg" readonly>
+	<div class="form-group">
+	  <div class="input-group">
+            <span class="input-group-btn">
+	      <span class="btn btn-default btn-file btn-lg">
+		Select R package&hellip; <input type="file" name="package">
+	      </span>
+            </span>
+            <input type="text" class="form-control input-lg" readonly>
+	  </div>
 	</div>
       </div>
 
+      <div class="well">
+	<p class="help-block">Alternative email address</p>
+
+	<div class="form-group">
+	  <input type="text" class="form-control input-lg"
+		 id="alternative-email" name="alternative-email"
+		 placeholder="Email address">
+	</div>
+      </div>
+
+      <button type="submit" class="btn btn-lg btn-success btn-file">
+	Submit
+      </button>
+
+    </div>
+
+    <div class="col-lg-6"><div class="well">
       <p class="help-block">Select platform to build on</p>
 
       <div class="form-group">
-        {{# platforms }}
+	{{# groups }}
+	<h4>{{ name  }}</h4>
+        {{# value }}
 	  <div class="radio">
 	    <label><input type="radio" name="platform" value="{{ name }}">
 	      {{ description }}
 	    </label>
 	  </div>
-	{{/ platforms }}
+	{{/ value }}
+	{{/ groups }}
       </div>
+    </div></div>
 
-      <p class="help-block">Alternative email address</p>
-
-      <div class="form-group">
-	<input type="text" class="form-control input-lg"
-	       id="alternative-email" name="alternative-email"
-	       placeholder="Email address">
-      </div>
-
-      <button type="submit" class="btn btn-lg btn-success btn-file">Submit</button>
-
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
