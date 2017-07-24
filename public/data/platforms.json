@@ -243,7 +243,7 @@
 
     {
 	"name": "solaris-x86-patched",
-	"description": "Oracle Solaris 10, x86, 32 bit (experimental)",
+	"description": "Oracle Solaris 10, x86, 32 bit, R-patched (experimental)",
 	"cran-name": "r-patched-solaris-x86",
 	"rversion": "r-patched",
 	"os-type": "Solaris",
