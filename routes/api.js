@@ -169,6 +169,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 	    'platforminfo': platform,
 	    'checkArgs': data.check_args || "",
 	    'envVars': data.env || { },
+	    'scripts': data.scripts || null,
 	    'builder': 'https://' + req.get('host')
 	};
 
