@@ -19,6 +19,8 @@ var status = require('./routes/status');
 var api = require('./routes/api');
 var build = require('./routes/build');
 
+require('dotenv').config();
+
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL ||
