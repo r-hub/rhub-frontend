@@ -170,7 +170,8 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 	    'checkArgs': data.check_args || "",
 	    'envVars': data.env || { },
 	    'scripts': data.scripts || null,
-	    'builder': 'https://' + req.get('host')
+	    'builder': 'https://' + req.get('host'),
+	    'options': data.options || { }
 	};
 
 	queue_job(job);

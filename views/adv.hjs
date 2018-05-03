@@ -34,6 +34,18 @@
 	</div>
       </div>
 
+      <div class="well">
+	<p class="help-block">Check options</p>
+
+	<div class="form-check">
+	  <input type="checkbox" class="form-check-input"
+		 id="build-package" name="build-package">
+	  <label class="form-check-label" for="build-package">
+	    Run <code>R CMD build first</code></label>
+	</div>
+	</p>
+      </div>
+
       <button type="submit" class="btn btn-lg btn-success btn-file">
 	Submit
       </button>

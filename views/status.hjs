@@ -7,14 +7,11 @@
 	<div class="panel-heading">
 	  <h3 class="panel-title">
 	    Status for build
-	    <b><a href="/status/{{ buildId }}">{{ buildId }}</a></b>,
-	    package {{ pkg }}, version {{ version }}
+	    <b><a href="/status/{{ buildId }}">{{ buildId }}</a></b>
 	  </h3>
 	</div>
 	<div class="panel-body">
 	  <div class="well">
-	    <b>Package:</b>  {{pkg }} <br>
-	    <b>Version:</b>  {{ version }} <br>
 	    <!-- <b>Submitted:</b> <span id="submitted">...</span> <br> -->
 	    <b>Status:</b> <span id="status">...</span> <br>
 	    <b>Duration:</b> <span id="duration">...</span>
