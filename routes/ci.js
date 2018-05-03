@@ -34,10 +34,9 @@ router.get('/', function(req, res, next) {
     if (err) {
       // TODO
     } else  {
-      return res.send('foobar');
+      console.log(jobs.rows);
       res.render('ci', {
-	partials: { jobs: 'jobs.html' },
-	jobs: jobs
+	jobs: jobs.rows
       });
     }
   })

@@ -1,0 +1,5 @@
+<!-- mode: -*- html -*- -->
+{{< layout}}{{$ content }}
+FOOBAR
+{{> joblist }}
+{{/ content }}{{/ layout }}
