@@ -18,7 +18,7 @@ var dokkucheck = require('./routes/check');
 var status = require('./routes/status');
 var api = require('./routes/api');
 var build = require('./routes/build');
-var project = require('./routes/project');
+var ci = require('./routes/ci');
 
 require('dotenv').config();
 
@@ -109,7 +109,7 @@ app.use('/file', express.static('uploads'));
 
 app.use('/check', dokkucheck);
 
-app.use('/-/project', project);
+app.use('/ci', ci);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

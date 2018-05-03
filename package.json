@@ -34,6 +34,7 @@
     "nodemailer": "^2.3.2",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
+    "pg": "^7.4.1",
     "pretty-ms": "^2.1.0",
     "rdesc-parser": "git://github.com/r-hub/rdesc-parser.git",
     "redis": "^2.6.2",
