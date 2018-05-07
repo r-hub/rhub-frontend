@@ -23,7 +23,7 @@ var re = '^/' + keep(re_state) + '/' + re_status + '/' +
 // and created.
 //
 // This should be ideally a POST request, but it is just easier to make
-// a GET from the pot-build Groovy script.
+// a GET from the post-build Groovy script.
 
 router.get(new RegExp(re), function(req, res) {
     var state = req.params[0];
