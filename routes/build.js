@@ -28,10 +28,7 @@ var re = '^/' + keep(re_state) + '/' + re_status + '/' +
 router.get(new RegExp(re), function(req, res) {
     var state = req.params[0];
     var id = req.params[1];	 // re_status is captured already
-    var pkg = req.params[2];	 // within re_status
-    var version = req.params[3]; // within re_status
-    var hexid = req.params[4];	 // within re_status
-    var time = req.params[5];
+    var time = req.params[4];
 
     function handle_error(err) {
 	if (err) {
