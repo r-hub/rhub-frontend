@@ -35,6 +35,10 @@ HTML: {{{ logHtml }}}
 Text: {{{ logText }}}
 Artifacts: {{{ artifactLink }}}
 
+Have questions, suggestions or want to report a bug?
+Please file an issue ticket at GitHub at
+https://github.com/r-hub/rhub/issues
+
 Thank You for using the R-hub builder.
 
 (c) 2016 The R Consortium
