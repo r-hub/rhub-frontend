@@ -19,11 +19,11 @@
 
 	<div class="input-group">
           <span class="input-group-btn">
-	    <button id="selectfilebutton" class="btn btn-primary btn-file btn-lg"
+	    <label id="selectfilebutton" class="btn btn-primary btn-file btn-lg"
 		  data-toggle="tooltip" data-placement="bottom"
 		  title="1. Choose a source R package (.tar.gz)">
 	      Select R package&hellip; <input type="file" name="package">
-	    </button>
+	    </label>
           </span>
           <input type="text" class="form-control input-lg" readonly>
           <span class="input-group-btn">
