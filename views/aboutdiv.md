@@ -12,11 +12,15 @@ Moreover, as a side-effect it also allows you to _build_ your R package on sever
 
 You can use the R-hub builder either
 
-* via the website (where you are now!)
+* via the website (where you are now!), from the [main page](https://builder.r-hub.io/) or [the advanced page](https://builder.r-hub.io/advanced).
 
 * via its API, in particular by using the [`rhub` package](https://github.com/r-hub/rhub).
 
 You can see a live demo of both the website frontend and of the `rhub` R package by Gábor Csárdi in [this video](https://www.r-consortium.org/events/2016/10/11/r-hub-public-beta).
+
+Please note that you can only verify your email address from GitHub if the address associated to your GitHub account listed as maintainer address in the DESCRIPTION of the package.
+
+### Website or package interface to R-hub?
 
 Advantages of using the `rhub` package over the website are that it allows your not living R, and that the R package offers shortcut functions such as `rhub::check_for_cran`, as well as the listing of your recent and current builds, by email address or package.
 
