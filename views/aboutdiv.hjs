@@ -1,0 +1,29 @@
+<h1>About the R-hub builder</h1>
+<p>The R-hub builder offers free R CMD Check as a service on different platforms. It is a project by Gábor Csárdi, supported by the R Consortium.</p>
+<h2>Why use R-hub builder?</h2>
+<p>The builder allows you to check your R package on several platforms, and R versions.</p>
+<p>Moreover, as a side-effect it also allows you to <em>build</em> your R package on several platforms, and R versions.</p>
+<h2>How to use R-hub builder?</h2>
+<p>You can use the R-hub builder either</p>
+<ul>
+<li>
+<p>via the website (where you are now!)</p>
+</li>
+<li>
+<p>via its API, in particular by using the <a href="https://github.com/r-hub/rhub"><code>rhub</code> package</a>.</p>
+</li>
+</ul>
+<p>You can see a live demo of both the website frontend and of the <code>rhub</code> R package by Gábor Csárdi in <a href="https://www.r-consortium.org/events/2016/10/11/r-hub-public-beta">this video</a>.</p>
+<p>Advantages of using the <code>rhub</code> package over the website are that it allows your not living R, and that the R package offers shortcut functions such as <code>rhub::check_for_cran</code>, as well as the listing of your recent and current builds, by email address or package.</p>
+<h2>A bug, question or feature request?</h2>
+<p>Your contributions are welcome. R-hub is developed entirely in the open <a href="https://github.com/r-hub">in its own GitHub organization</a>:</p>
+<ul>
+<li>
+<p>If you can identify to which repo your bug report/feature request/question belongs file an issue there. E.g. the source for this website lives <a href="https://github.com/r-hub/rhub-frontend">here</a>.</p>
+</li>
+<li>
+<p>If you can't find to which repo your bug report/feature request/question belongs, no problem, file an issue in <a href="https://github.com/r-hub/rhub">the repo of the R package</a>.</p>
+</li>
+</ul>
+<p>You can also send an email to admin@r-hub.io, and there might soon be a mailing list, stay tuned. You could also ask usage questions over <a href="https://community.rstudio.com/">at RStudio community forum</a>.</p>
+
