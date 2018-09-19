@@ -1,44 +1,40 @@
+
 Source for the frontend of R-hub builder
 ========================================
 
-# Notes on how to build the website 
+# Notes on how to run the web app
 
-## On macOS
+## Requirements
+
+You need a local Redis server. E.g. on macOS:
+```
+brew install redis
+```
+
+On Windows install Redis from
+https://github.com/MicrosoftArchive/redis/releases
+
+On Linux your distribution probably contains Redis.
+
+## Install dependencies
 
 ```
 npm install
 npm install -g  supervisor
-export JENKINS_URL=http://foo.bar
-export  LOGDB_URL=http://foo.bar
-export  GITHUB_CLIENT_ID=foo
-export GITHUB_CLIENT_SECRET=bar
-export MAILGUN_API_KEY=key
 brew intall redis
-# In another terminal:
+```
+
+`supervisor` is not strictly required, but it is nice, because it
+automatically reloads the app if the source files change.
+
+## Run the app
+
+Start Redis, and in another terminal start the app:
+
+```
 redis-server
-# In the original terminal:
+## In another terminal
 supervisor bin/www
-# browse http://localhost:3000/
 ```
 
-## On Windows
-
-```
-# first install npm
-npm install
-npm install -g  supervisor
-SET JENKINS_URL=http://foo.bar
-SET LOGDB_URL=http://foo.bar
-SET GITHUB_CLIENT_ID=foo
-SET GITHUB_CLIENT_SECRET=bar
-SET MAILGUN_API_KEY=key
-# install redis from https://github.com/MicrosoftArchive/redis/releases 
-# In another terminal:
-redis-server
-# In the original terminal:
-supervisor bin/www
-# browse http://localhost:3000/
-
-```
-
-
+Browse http://localhost:3000/

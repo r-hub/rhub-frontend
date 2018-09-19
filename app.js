@@ -21,8 +21,8 @@ var build = require('./routes/build');
 
 require('dotenv').config();
 
-var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || 'foo';
+var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || 'bar';
 var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL ||
     'http://127.0.0.1:3000';
 var REDIS_URL = process.env.REDIS_URL ||
