@@ -30,6 +30,10 @@ router.get('/advanced', function(req, res, next) {
     );
 });
 
+router.get('/about.html', function(req, res) {
+    res.render('about', { 'user': get_user(req) });
+});
+
 router.get('/terms.html', function(req, res) {
     res.render('terms', { 'user': get_user(req) });
 });
