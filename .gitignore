@@ -1,2 +1,4 @@
 /node_modules
 /.env
+.Rproj.user
+rhub-frontend.Rproj

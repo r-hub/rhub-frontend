@@ -62,7 +62,8 @@ app.set('partials', {
     'ie7notice': 'ie7notice',
     'footer': 'footer',
     'simple': 'simple',
-    'adv': 'adv'
+    'adv': 'adv',
+    'aboutdiv': 'aboutdiv'
 })
 
 // uncomment after placing your favicon in /public
