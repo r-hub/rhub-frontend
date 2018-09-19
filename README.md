@@ -12,6 +12,7 @@ export JENKINS_URL=http://foo.bar
 export  LOGDB_URL=http://foo.bar
 export  GITHUB_CLIENT_ID=foo
 export GITHUB_CLIENT_SECRET=bar
+export MAILGUN_API_KEY=key
 brew intall redis
 # In another terminal:
 redis-server
@@ -30,6 +31,7 @@ SET JENKINS_URL=http://foo.bar
 SET LOGDB_URL=http://foo.bar
 SET GITHUB_CLIENT_ID=foo
 SET GITHUB_CLIENT_SECRET=bar
+SET MAILGUN_API_KEY=key
 # install redis from https://github.com/MicrosoftArchive/redis/releases 
 # In another terminal:
 redis-server
