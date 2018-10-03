@@ -16,13 +16,13 @@ readLines("views/aboutdiv.md") %>%
 <p>via the website (where you are now!), from the <a href="https://builder.r-hub.io/">main page</a> or <a href="https://builder.r-hub.io/advanced">the advanced page</a>.</p>
 </li>
 <li>
-<p>via its API, in particular by using the <a href="https://github.com/r-hub/rhub"><code>rhub</code> package</a>.</p>
+<p>via its API, in particular by using the <a href="https://r-hub.github.io/rhub/"><code>rhub</code> package</a>.</p>
 </li>
 </ul>
 <p>You can see a live demo of both the website frontend and of the <code>rhub</code> R package in <a href="https://www.r-consortium.org/events/2016/10/11/r-hub-public-beta">this video</a>.</p>
 <p>Please note that you can only verify your email address from GitHub if the address associated to your GitHub account listed as maintainer address in the DESCRIPTION of the package.</p>
 <h3>Website or package interface to the R-hub builder?</h3>
-<p>Advantages of using the <code>rhub</code> package over the website are that it allows your not leaving R, and that the R package offers shortcut functions such as <code>rhub::check_for_cran()</code>, as well as the listing of your recent and current builds, by email address or package.</p>
+<p>Advantages of using the <code>rhub</code> package over the website are that it allows your not leaving R, and that the R package offers <a href="https://r-hub.github.io/rhub/reference/index.html#section-check-shortcuts">shortcut functions</a> such as <a href="https://r-hub.github.io/rhub/reference/check_for_cran.html"><code>rhub::check_for_cran()</code></a>, as well as the <a href="https://r-hub.github.io/rhub/reference/index.html#section-check-management">listing of your recent and current builds</a>, by email address or package.</p>
 <h2>A bug, question or feature request?</h2>
 <p>Your contributions are welcome. R-hub is developed entirely in the open <a href="https://github.com/r-hub">in its own GitHub organization</a>.</p>
 <p>You can post your bug report/feature request/question belongs file as an issue in <a href="https://github.com/r-hub/rhub">the repo of the R package</a>.</p>

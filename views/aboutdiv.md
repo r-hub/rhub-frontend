@@ -20,7 +20,7 @@ You can use the R-hub builder either
 
 * via the website (where you are now!), from the [main page](https://builder.r-hub.io/) or [the advanced page](https://builder.r-hub.io/advanced).
 
-* via its API, in particular by using the [`rhub` package](https://github.com/r-hub/rhub).
+* via its API, in particular by using the [`rhub` package](https://r-hub.github.io/rhub/).
 
 You can see a live demo of both the website frontend and of the `rhub` R package in [this video](https://www.r-consortium.org/events/2016/10/11/r-hub-public-beta).
 
@@ -28,7 +28,7 @@ Please note that you can only verify your email address from GitHub if the addre
 
 ### Website or package interface to the R-hub builder?
 
-Advantages of using the `rhub` package over the website are that it allows your not leaving R, and that the R package offers shortcut functions such as `rhub::check_for_cran()`, as well as the listing of your recent and current builds, by email address or package.
+Advantages of using the `rhub` package over the website are that it allows your not leaving R, and that the R package offers [shortcut functions](https://r-hub.github.io/rhub/reference/index.html#section-check-shortcuts) such as [`rhub::check_for_cran()`](https://r-hub.github.io/rhub/reference/check_for_cran.html), as well as the [listing of your recent and current builds](https://r-hub.github.io/rhub/reference/index.html#section-check-management), by email address or package.
 
 ## A bug, question or feature request?
 
