@@ -26,7 +26,7 @@ var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || 'bar';
 var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL ||
     'http://127.0.0.1:3000';
 var REDIS_URL = process.env.REDIS_URL ||
-    'redis://127.0.0.1:6379/0';
+    'redis://redis:6379/0';
 
 passport.use(
     new GitHubStrategy(
