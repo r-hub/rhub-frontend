@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var redis = require('redis');
 var urls = require('../lib/urls');
-var client = redis.createClient(urls.validemail_url);
+var client = null;
 var uuid = require('uuid');
 var mail_token = require('../lib/mail-token');
 var get_image = require('../lib/get-image');
@@ -37,6 +37,9 @@ router.post('/check/validate_email', function(req, res) {
     var token = uuid.v4().replace(/-/g, "");
 
     // Add to the DB, if successful, then try to send an email
+    if (client ===  null) {
+        client = redis.createClient(urls.validemail_url);
+    }
     client.set(data.email + '-pending', token, function(err) {
 	if (err) { return internal_error(res); }
 
@@ -67,6 +70,9 @@ router.post('/check/submit', function(req, res) {
 	    }));
     }
 
+    if (client ===  null) {
+        client = redis.createClient(urls.validemail_url);
+    }
     client.get(data.email, function(err, token) {
 	if (err) { return internal_error(res, "Email not validated"); }
 	if (data.token == token) {
@@ -254,6 +260,9 @@ router.post('/list', function(req, res) {
 		"message": "Invalid data, need 'email' and 'token'" }));
     }
 
+    if (client ===  null) {
+        client = redis.createClient(urls.validemail_url);
+    }
     client.get(data.email, function(err, token) {
 	if (err) { return internal_error(res, "Email not validated"); }
 	if (data.token != token) {
