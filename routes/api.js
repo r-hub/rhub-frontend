@@ -148,7 +148,9 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 
     var originalname = data.package + '_' + data.version + '.tar.gz';
     var id = originalname + '-' + hash;
-    var url = req.protocol + '://' + req.get('host') + '/file/' + filename;
+    var baseurl = process.env.RHUB_BUILDER_URL ||
+	req.protocol + '://' + req.get('host');
+    var url = baseurl + '/file/' + filename;
     var logUrl = '/status/' + id;
     var rawLogUrl = '/status/original/' + id;
     var fullLogUrl = req.protocol + '://' + req.get('host') + logUrl;
@@ -176,7 +178,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 	    'checkArgs': data.check_args || "",
 	    'envVars': data.env || { },
 	    'scripts': data.scripts || null,
-	    'builder': 'https://' + req.get('host'),
+	    'builder': baseurl,
 	    'options': data.options || { }
 	};
 
