@@ -11,7 +11,8 @@ var fs = require('fs');
 var re_status = require('../lib/re-status');
 var got = require('got');
 var url = require('url');
-var jenkins = require('jenkins')( { baseUrl: urls.jenkins });
+var jenkins = require('jenkins')( {
+  baseUrl: urls.jenkins, crumbIssuer: true });
 var isArray = require('is-array');
 var async = require('async');
 var db = require('nano')(urls.logdb);

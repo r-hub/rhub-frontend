@@ -91,7 +91,7 @@ router.get(new RegExp('^/code/' + re_status + '$'), function(req, res) {
 
     var jenkins_url = urls.jenkins;
     var jenkins = require('jenkins');
-    var conn = jenkins(jenkins_url);
+    var conn = jenkins({ baseUrl: jenkins_url, crumbIssuer: true });
 
     var info = {
 	'status': 'preparing',
