@@ -25,6 +25,8 @@ var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || 'foo';
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || 'bar';
 var RHUB_BUILDER_URL = process.env.RHUB_BUILDER_URL ||
     'http://127.0.0.1:3000';
+var RHUB_BUILDER_EXTERNAL_URL = process.env.RHUB_BUILDER_EXTERNAL_URL ||
+    RHUB_BUILDER_URL;
 var REDIS_URL = process.env.REDIS_URL ||
     'redis://redis:6379/0';
 
@@ -33,7 +35,8 @@ passport.use(
 	{
 	    clientID: GITHUB_CLIENT_ID,
 	    clientSecret: GITHUB_CLIENT_SECRET,
-	    callbackURL: RHUB_BUILDER_URL + '/login/github/callback'
+	    callbackURL: RHUB_BUILDER_EXTERNAL_URL +
+	      '/login/github/callback'
 	},
 	function(accessToken, refreshToken, profile, cb) {
 	    return cb(null, 'github:' + JSON.stringify(profile.emails));
