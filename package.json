@@ -24,7 +24,7 @@
     "hogan.js": "^3.0.2",
     "is-array": "^1.0.1",
     "jenkins": "^0.19.0",
-    "jenkins-log-stream": "^1.0.4",
+    "jenkins-log-stream": "^2.0.0",
     "left-pad": "^1.1.0",
     "mailgun-js": "^0.20.0",
     "morgan": "~1.6.1",
