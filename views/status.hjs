@@ -24,7 +24,9 @@
 	    <b>Duration:</b>  <span id="duration"> ???</span> <br>
 	  </div>
 	  <hr>
-	  <div id="log"></div>
+          <div id="log">
+          Waiting for the build to start...
+          </div>
 	</div>
       </div>
 
@@ -33,10 +35,22 @@
 <script>
   function stream_log() {
     var client = new XMLHttpRequest();
+    client.timeout = 2000;
     client.open('get', '/status/embedded/{{ buildId }}');
     client.onprogress = function() {
-      var div = document.getElementById('log');
-      div.innerHTML = this.responseText;
+      if (this.status < 300) {
+	client.timeout = 0;
+	var div = document.getElementById('log');
+	div.innerHTML = this.responseText;
+      }
+    }
+    client.onreadystatechange = function() {
+      if (client.readyState == 4 && client.status >= 300) {
+	setTimeout(stream_log, 3000);
+      }
+    }
+    client.ontimeout = function() {
+      setTimeout(stream_log, 3000);
     }
     client.send();
   }

@@ -26,14 +26,24 @@ router.get(new RegExp('^/' + re_status + '$'), function(req, res) {
     );
 });
 
+function stream(log, res, filter) {
+  var log_by_line = byline(log);
+  if (filter === undefined) { filter = new LogFilter(); }
+
+  var st = byline(log);
+
+  if (filter !== null) { st = st.pipe(filter); }
+
+  st.pipe(res)
+    .on("error", function(e) { res.set(404).end("No such job"); });
+}
+
 router.get(new RegExp('^/log/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
     var log = new JenkinsLogStream({
 	'baseUrl': urls.jenkins,
 	'job': name
     });
-    var log_by_line = byline(log);
-    var logFilter = new LogFilter();
 
     res.header("Content-Type", "text/html; charset=utf-8")
 	.write(
@@ -43,7 +53,7 @@ router.get(new RegExp('^/log/' + re_status + '$'), function(req, res) {
 	    "</head><body>"
 	);
 
-    log_by_line.pipe(logFilter).pipe(res)
+    stream(log, res);
 });
 
 router.get(new RegExp('^/embedded/' + re_status + '$'), function(req, res) {
@@ -52,12 +62,10 @@ router.get(new RegExp('^/embedded/' + re_status + '$'), function(req, res) {
 	'baseUrl': urls.jenkins,
 	'job': name
     });
-    var log_by_line = byline(log);
-    var logFilter = new LogFilter();
 
     res.header("Content-Type", "text/html; charset=utf-8")
 
-    log_by_line.pipe(logFilter).pipe(res)
+    stream(log, res);
 });
 
 router.get(new RegExp('^/raw/' + re_status + '$'), function(req, res) {
@@ -66,11 +74,10 @@ router.get(new RegExp('^/raw/' + re_status + '$'), function(req, res) {
 	'baseUrl': urls.jenkins,
 	'job': name
     });
-    var log_by_line = byline(log);
     var simpleLogFilter = new SimpleLogFilter();
 
     res.header("Content-Type", "text/plain")
-    log_by_line.pipe(simpleLogFilter).pipe(res)
+    stream(log, res, simpleLogFilter);
 });
 
 router.get(new RegExp('^/original/' + re_status + '$'), function(req, res) {
@@ -79,11 +86,9 @@ router.get(new RegExp('^/original/' + re_status + '$'), function(req, res) {
 	'baseUrl': urls.jenkins,
 	'job': name
     });
-    var log_by_line = byline(log);
-    var simpleLogFilter = new SimpleLogFilter();
 
     res.header("Content-Type", "text/plain")
-    log.pipe(res)
+    stream(log, res, null);
 });
 
 router.get(new RegExp('^/code/' + re_status + '$'), function(req, res) {
