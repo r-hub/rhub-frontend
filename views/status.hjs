@@ -11,10 +11,17 @@
 	  </h3>
 	</div>
 	<div class="panel-body">
-	  <div class="well">
+	  <div class="well" id="status-div">
 	    <!-- <b>Submitted:</b> <span id="submitted">...</span> <br> -->
-	    <b>Status:</b> <span id="status">...</span> <br>
-	    <b>Duration:</b> <span id="duration">...</span>
+	    <b>Build id:</b>  <span id="id">       ...</span> <br>
+	    <b>Package:</b>   <span id="package">  ...</span> <br>
+	    <b>Version:</b>   <span id="version">  ...</span> <br>
+	    <b>Email:</b>     <span id="email">    ...</span> <br>
+	    <b>Status:</b>    <span id="status">   ...</span> <br>
+	    <b>Platform:</b>  <span id="platform"> ...</span> <br>
+	    <b>Submitted:</b> <span id="submitted">...</span> <br>
+	    <b>Started:</b>   <span id="started">hang tight</span> <br>
+	    <b>Duration:</b>  <span id="duration"> ???</span> <br>
 	  </div>
 	  <hr>
 	  <div id="log"></div>
@@ -36,29 +43,62 @@
 </script>
 
 <script>
+  function prettyMs(millisec) {
+    var seconds = (millisec / 1000).toFixed(1);
+    var minutes = (millisec / (1000 * 60)).toFixed(1);
+    var hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+    var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+    if (seconds < 60) {
+      return seconds + " sec";
+    } else if (minutes < 60) {
+      return minutes + " min";
+    } else if (hours < 24) {
+      return hours + " hrs";
+    } else {
+      return days + " days"
+    }
+  }
+
   function update_status() {
     var client = new XMLHttpRequest();
     client.onreadystatechange = function() {
       if (client.readyState == 4 && client.status == 200) {
-        var stat = JSON.parse(client.responseText);
-        var status = stat.status;
-        document.getElementById('status').innerHTML = status;
-        if (status == 'error') {
-          document.getElementById('panel').className = 'panel panel-danger';
-        } else if (status == 'success') {
-          document.getElementById('panel').className = 'panel panel-success';
-        }
-        // document.getElementById('submitted').innerHTML = stat.submitted;
-        if (stat.duration) {
-          document.getElementById('duration').innerHTML = stat.duration;
-        }
-        if (status != 'success' && status != 'error' &&
-            status != 'warning' && status != 'note') {
-          setTimeout(update_status, 5000);
-        }
+        var doc = JSON.parse(client.responseText);
+
+	// Fill in job data
+        document.getElementById('id').innerHTML = doc.id;
+        document.getElementById('package').innerHTML = doc.package;
+        document.getElementById('version').innerHTML = doc.version;
+        document.getElementById('email').innerHTML = doc.email;
+        document.getElementById('status').innerHTML = doc.status;
+        document.getElementById('platform').innerHTML = doc.platform.description;
+        document.getElementById('submitted').innerHTML = doc.submitted;
+        if (!!doc.started) {
+	  document.getElementById('started').innerHTML = doc.started;
+	}
+        if (!!doc.build_time) {
+	  document.getElementById('duration').innerHTML = prettyMs(doc.build_time)
+	}
+
+	// Visual markup
+        if (doc.status === "created" || doc.status === "in-progress") {
+	  // result not known yet
+	  document.getElementById('panel').className = 'panel panel-primary';
+	  setTimeout(update_status, 1000);
+        } else if (doc.status === "ok" || doc.status === "success") {
+	  document.getElementById('panel').className = 'panel panel-success';
+	} else if (doc.status === "note") {
+	  document.getElementById('panel').className = 'panel panel-info';
+	} else if (doc.status === "warning") {
+	  document.getElementById('panel').className = 'panel panel-warning';
+	} else if (doc.status === "error" || doc.status === "aborted") {
+	  document.getElementById('panel').className = 'panel panel-danger';
+	}
+      } else if (client.readyState == 4)  {
+	// TODO: Error?
       }
     };
-    client.open('get', '/status/code/{{ buildId }}');
+    client.open('get', '/api/status/{{ buildId }}');
     client.send();
   }
 </script>
