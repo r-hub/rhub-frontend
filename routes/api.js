@@ -112,6 +112,7 @@ function valid_submission(req, res, data) {
 
 	var platform = data.platform;
 	if (! isArray(platform)) { data.platform = [ platform ]; }
+	data.submitted = new Date().toISOString();
 	async.map(
 	    data.platform,
 	    function(p, cb) {
@@ -163,7 +164,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 	    'pkg': data.package,
 	    'version': data.version,
 	    'logUrl': logUrl,
-	    'submitted': new Date().toISOString(),
+	    'submitted': data.submitted,
 	    'platform': platform.name,
 	    'ostype': platform["os-type"],
 	    'rversion': platform.rversion,
