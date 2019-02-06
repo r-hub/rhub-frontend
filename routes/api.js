@@ -141,6 +141,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
     data.platform = platform;
 
     var originalname = data.package + '_' + data.version + '.tar.gz';
+    var groupid = originalname + "-" + filename;
     var id = originalname + '-' + hash;
     var url = req.protocol + '://' + req.get('host') + '/file/' + filename;
     var logUrl = '/status/' + id;
@@ -155,6 +156,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 	    'buildId': id,
 	    'package': originalname,
 	    'filename': filename,
+	    'group': groupid,
 	    'url': url,
 	    'size': null,
 	    'email': data.email,
