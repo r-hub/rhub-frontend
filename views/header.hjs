@@ -22,7 +22,7 @@
 <meta property="description" content="R package builder, by the R-hub project of the R Consortium, easing the R package development process.">
 <meta property="og:description" content="R package builder, by the R-hub project of the R Consortium, easing the R package development process.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="/img/rhub-square-white.png" >
+<meta name="twitter:image" content="https://builder.r-hub.io/img/rhub-square-white.png" >
 
 <script src="/javascripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
