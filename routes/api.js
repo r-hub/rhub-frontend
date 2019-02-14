@@ -15,6 +15,7 @@ var jenkins = require('jenkins')( { baseUrl: urls.jenkins });
 var isArray = require('is-array');
 var async = require('async');
 var db = require('nano')(urls.logdb);
+var check_token = require('../lib/check-token');
 
 router.get('/platform/list', function(req, res) {
     res.set('Content-Type', 'application/json; charset=utf-8')
@@ -245,6 +246,8 @@ router.post('/status', function(req, res) {
     });
 });
 
+// This is deprecated now, use the GET method
+
 router.post('/list', function(req, res) {
 
     var data = req.body;
@@ -276,6 +279,64 @@ router.post('/list', function(req, res) {
     });
 });
 
+router.get('/list/:email', function(req, res) {
+    check_token(client, req, res, function(err, email) {
+	if (err) { console.log(err); return; }
+	var fullurl = urls.logdb + '/_design/app/_rewrite/-/group/email/' +
+	    encodeURIComponent(email) + '?limit=20';
+	return list_generic(fullurl, res);
+
+    });
+});
+
+router.get('/list/:email/:package', function(req, res) {
+    check_token(client, req, res, function(err, email) {
+	if (err) { console.log(err); return; }
+	var fullurl = urls.logdb + '/_design/app/_rewrite/-/group/package/' +
+	    encodeURIComponent(email) + '/' + req.params.package + '?limit=20';
+	return list_generic(fullurl, res);
+    });
+});
+
+function list_generic(fullurl, res) {
+    var _url = url.parse(fullurl);
+    var dburl = _url.protocol + '//' + _url.host + _url.path;
+
+    got.get(dburl, { auth: _url.auth }, function(err, response) {
+	if (err) { return internal_error(res, "Email not validated"); }
+
+	var jresponse = JSON.parse(response);
+	var groups = jresponse.rows.map(
+	    function(x) { return x.value; }
+	);
+	var ids = [].concat.apply([], groups);
+
+	fullurl = urls.logdb + '/_all_docs?include_docs=true';
+	_url = url.parse(fullurl);
+	dburl = _url.protocol + '//' + _url.host + _url.path;
+
+	got.post(
+	    dburl,
+	    { auth: _url.auth, body: JSON.stringify({ keys: ids}) },
+	    function(err2, response2) {
+		if (err2) { return internal_error(res, "Internal error"); }
+		var reply = { };
+		var jresponse2 = JSON.parse(response2);
+		jresponse2.rows.map(
+		    function(x) {
+			var g = x.doc.group || x.doc.id;
+			if (! reply[g]) { reply[g] = [ ] }
+			reply[g].push(x.doc)
+			return null;
+		    }
+		);
+
+		res.set('Content-Type', 'application/json; charset=utf-8')
+		    .end(JSON.stringify(reply));
+	    });
+    });
+}
+
 function list_email(req, res, email) {
 
     var fullurl = urls.logdb + '/_design/app/_rewrite/-/email/' +
@@ -284,7 +345,7 @@ function list_email(req, res, email) {
     var dburl = _url.protocol + '//' + _url.host + _url.path;
 
     got.get(dburl, { auth: _url.auth }, function(err, response) {
-	if (err) { return internal_error(res, "Email not validated"); }
+	if (err) { return internal_error(res, "Internal error"); }
 
 	var list = JSON.parse(response).rows.map(
 	    function(x) { return x.value; }
