@@ -20,6 +20,14 @@
 
       <ul class="nav navbar-nav">
         <li><a href="/about.html">About</a></li>
+      </ul>    
+
+      <ul class="nav navbar-nav">
+        <li><a href="https://docs.r-hub.io/">Docs</a></li>
+      </ul>    
+
+      <ul class="nav navbar-nav">
+        <li><a href="https://blog.r-hub.io/">Blog</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
