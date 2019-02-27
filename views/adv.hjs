@@ -11,7 +11,9 @@
     <div class="col-lg-6">
       <div class="well">
 	<p class="help-block">Select the R package to upload</p>
-
+<p class="text-center">
+    A .tar.gz. If not produced by <code>R CMD build</code>/<code>pkgbuild::build()</code> or friends, use the check option.
+  </p>
 	<div class="form-group">
 	  <div class="input-group">
             <span class="input-group-btn">
@@ -26,7 +28,9 @@
 
       <div class="well">
 	<p class="help-block">Alternative email address</p>
-
+<p class="text-center">
+    <a href="https://docs.r-hub.io/#email-address">Help on email address</a>
+  </p>
 	<div class="form-group">
 	  <input type="text" class="form-control input-lg"
 		 id="alternative-email" name="alternative-email"
@@ -36,7 +40,9 @@
 
       <div class="well">
 	<p class="help-block">Check options</p>
-
+<p class="text-center">
+    <a href="https://docs.r-hub.io/#pkg-vs-web">For more options use the <code>rhub</code> R package</a>
+  </p>
 	<div class="form-check">
 	  <input type="checkbox" class="form-check-input"
 		 id="build-package" name="build-package">
@@ -54,7 +60,9 @@
 
     <div class="col-lg-6"><div class="well">
       <p class="help-block">Select platform(s) to build on</p>
-
+   <p class="text-center">
+    <a href="https://docs.r-hub.io/#which-platform">Help on platform choice</a>
+  </p>
       <div class="form-group">
 	{{# groups }}
 	<h4>{{ name  }}</h4>
