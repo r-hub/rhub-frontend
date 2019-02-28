@@ -10,10 +10,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">R-hub</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
 
+      <ul class="nav navbar-nav">
+    <li><a href="/about.html"> <img src="/rhub-header.png" alt="R-hub logo" height = "25"/></a></li>
+    </ul>
       <ul class="nav navbar-nav">
         <li><a href="/">Builder</a></li>
       </ul>      
