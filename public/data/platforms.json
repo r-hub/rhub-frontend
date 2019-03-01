@@ -10,7 +10,8 @@
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -24,7 +25,8 @@
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-release",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -38,7 +40,8 @@
 	"compilers": "GCC 6.2.0 (Debian 6.2.0-6)",
 	"docker-image": "debian-gcc-patched",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -52,7 +55,8 @@
 	"compilers": "GCC 6.1.1",
 	"docker-image": "fedora-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -66,7 +70,8 @@
 	"compilers": "clang version 3.8.0; GNU Fortran 6.1.1",
 	"docker-image": "fedora-clang-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-clang",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -80,7 +85,8 @@
 	"compilers": "GCC 5.3.1",
 	"docker-image": "ubuntu-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -94,7 +100,8 @@
 	"compilers": "GCC 5.3.1",
 	"docker-image": "ubuntu-gcc-release",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -108,7 +115,8 @@
 	"compilers": "GCC 4.4.x",
 	"docker-image": "centos6-epel",
 	"sysreqs-platform": "linux-x86_64-centos6-epel",
-	"categories": ["Linux"]
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -122,8 +130,9 @@
 	"compilers": "GCC 5.2.1",
 	"docker-image": "centos6-epel-rdt",
 	"sysreqs-platform": "linux-x86_64-centos6-epel",
-	"categories": ["Linux"]
-    },    
+	"categories": ["Linux"],
+	"node-labels": ["linux"]
+    },
 
     {
 	"name": "linux-x86_64-rocker-gcc-san",
@@ -137,7 +146,8 @@
 	"docker-image": "rocker-gcc-san",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
         "output-parser": "sanitizers",
-	"categories": ["Checks for compiled code"]
+	"categories": ["Checks for compiled code"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -151,7 +161,8 @@
 	"compilers": "GCC 4.6.3, Rtools 3.3",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
-	"categories": ["Windows"]
+	"categories": ["Windows"],
+	"node-labels": ["windows", "rtools3"]
     },
 
     {
@@ -165,7 +176,8 @@
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
-	"categories": ["Windows"]
+	"categories": ["Windows"],
+	"node-labels": ["windows", "rtools3"]
     },
 
     {
@@ -179,7 +191,8 @@
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
-	"categories": ["Windows"]
+	"categories": ["Windows"],
+	"node-labels": ["windows", "rtools3"]
     },
 
     {
@@ -193,7 +206,23 @@
 	"compilers": "GCC 4.9.3, Rtools 3.4",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
-	"categories": ["Windows"]
+	"categories": ["Windows"],
+	"node-labels": ["windows", "rtools3"]
+    },
+
+    {
+	"name": "windows-x86_64-devel-rtools4",
+	"description": "Windows Server 2012, R-devel, Rtools4.0, 32/64 bit",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2012",
+	"compilers": "Rtools 4.0",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2012",
+	"categories": ["Windows"],
+	"node-labels": ["windows", "rtools4.0"]
     },
 
     {
@@ -208,7 +237,8 @@
 	"compilers": "Apple LLVM version 6.0 (clang-600.0.57); GNU Fortran 4.2.3",
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang",
-	"categories": ["macOS"]
+	"categories": ["macOS"],
+	"node-labels": ["macos", "mavericks", "r-oldrel"]
     },
 
     {
@@ -223,7 +253,8 @@
 	"compilers": "Apple LLVM version 8.0 (clang-800.0.42.1); GNU Fortran 4.2.3",
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang",
-	"categories": ["macOS"]
+	"categories": ["macOS"],
+	"node-labels": ["macos", "elcapitan", "r-release"]
     },
 
     {
@@ -238,7 +269,8 @@
 	"docker-image": "ubuntu-rchk",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
         "output-parser": "rchk",
-	"categories": ["Checks for compiled code"]
+	"categories": ["Checks for compiled code"],
+	"node-labels": ["linux"]
     },
 
     {
@@ -252,6 +284,7 @@
 	"compilers": "GCC 5.2.0",
 	"docker-image": null,
 	"sysreqs-platform": "solaris-10",
-	"categories": ["Solaris"]
+	"categories": ["Solaris"],
+	"node-labels": ["solaris"]
     }
 ]
