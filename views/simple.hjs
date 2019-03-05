@@ -21,7 +21,7 @@
           <span class="input-group-btn">
 	    <label id="selectfilebutton" class="btn btn-primary btn-file btn-lg"
 		  data-toggle="tooltip" data-placement="bottom"
-		  title="1. Choose a source R package (.tar.gz)">
+		  title="1. Select a source R package (.tar.gz, if not built click on Advanced)">
 	      Select R package&hellip; <input type="file" name="package">
 	    </label>
           </span>
@@ -47,7 +47,7 @@
     <div class="col-lg-2">
       <a href="/advanced" class="btn btn-lg btn-default"
 	 data-toggle="tooltip" data-placement="right"
-	 title="Choose platform or select alternate email address">Advanced</a>
+	 title="Select platform(s), select alternate email address, build package">Advanced</a>
     </div>
 
   </div> <!-- row -->

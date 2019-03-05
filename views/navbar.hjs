@@ -38,7 +38,7 @@
 	  <li><a href="/logout">Logout</a></li>
 	{{/ user }}
 	{{^ user }}
-	  <li><a>Email not verified</a></li>
+	  <li><a title = "Email will be verified after package upload">Email not verified</a></li>
 	{{/ user }}
       </ul>
     </div><!-- /.nav-collapse -->

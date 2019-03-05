@@ -11,7 +11,6 @@
     <div class="col-lg-6">
       <div class="well">
 	<p class="help-block">Select the R package to upload</p>
-
 	<div class="form-group">
 	  <div class="input-group">
             <span class="input-group-btn">
@@ -26,7 +25,9 @@
 
       <div class="well">
 	<p class="help-block">Alternative email address</p>
-
+<p class="text">
+    <small><a href="https://docs.r-hub.io/#email-address" target="_blank">Help on email address</a></small>
+  </p>
 	<div class="form-group">
 	  <input type="text" class="form-control input-lg"
 		 id="alternative-email" name="alternative-email"
@@ -36,7 +37,9 @@
 
       <div class="well">
 	<p class="help-block">Check options</p>
-
+<p class="center">
+    <small><a href="https://docs.r-hub.io/#pkg-vs-web" target="_blank">For more options use the <code>rhub</code> R package</a></small>
+  </p>
 	<div class="form-check">
 	  <input type="checkbox" class="form-check-input"
 		 id="build-package" name="build-package">
@@ -53,8 +56,10 @@
     </div>
 
     <div class="col-lg-6"><div class="well">
-      <p class="help-block">Select platform to build on</p>
-
+      <p class="help-block">Select platform(s) to build on</p>
+   <p class="text">
+    <small><a href="https://docs.r-hub.io/#which-platform" target="_blank">Help on platform choice</a></small>
+  </p>
       <div class="form-group">
 	{{# groups }}
 	<h4>{{ name  }}</h4>
