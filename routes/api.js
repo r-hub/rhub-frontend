@@ -325,6 +325,7 @@ function list_generic(fullurl, res) {
 		jresponse2.rows.map(
 		    function(x) {
 			var g = x.doc.group || x.doc.id;
+			x.doc.group = g;
 			if (! reply[g]) { reply[g] = [ ] }
 			reply[g].push(x.doc)
 			return null;
