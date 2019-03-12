@@ -137,19 +137,27 @@ function valid_submission(req, res, data) {
     });
 }
 
+function get_protocol (req) {
+    var proto = req.connection.encrypted ? 'https' : 'http';
+    // only do this if you trust the proxy
+    proto = req.headers['x-forwarded-proto'] || proto;
+    return proto.split(/\s*,\s*/)[0];
+}
+
 function valid_submission1(hash, platform, data_orig, req, filename, callback) {
 
     var data = data_orig;
     data.platform = platform;
 
+    var protocol = get_protocol(req);
     var originalname = data.package + '_' + data.version + '.tar.gz';
     var groupid = originalname + "-" + filename;
     var id = originalname + '-' + hash;
-    var url = req.protocol + '://' + req.get('host') + '/file/' + filename;
+    var url = protocol + '://' + req.get('host') + '/file/' + filename;
     var logUrl = '/status/' + id;
     var rawLogUrl = '/status/original/' + id;
-    var fullLogUrl = req.protocol + '://' + req.get('host') + logUrl;
-    var fullRawLogUrl = req.protocol + '://' + req.get('host') + rawLogUrl;
+    var fullLogUrl = protocol + '://' + req.get('host') + logUrl;
+    var fullRawLogUrl = protocol + '://' + req.get('host') + rawLogUrl;
 
     get_image(data.platform, function(err, platform) {
 	if (err) { return callback("Invalid platform"); }
