@@ -200,7 +200,7 @@ function valid_submission1(hash, platform, data_orig, req, filename, callback) {
     });
 }
 
-// This is for compatibility
+// This is for compatibility, the POST request handles a list of ids
 router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     var name = req.params[0];
 
@@ -334,6 +334,8 @@ function list_generic(fullurl, res) {
 		    function(x) {
 			var g = x.doc.group || x.doc.id;
 			x.doc.group = g;
+			x.doc.check_output = null;
+			x.doc.preperror_log = null;
 			if (! reply[g]) { reply[g] = [ ] }
 			reply[g].push(x.doc)
 			return null;
