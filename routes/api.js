@@ -222,6 +222,7 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
                     .end(JSON.stringify(msg));
             }
 
+	    response.ui = response.ui || 'unknown';
             res.end(response);
         }
     );
@@ -250,7 +251,10 @@ router.post('/status', function(req, res) {
 		.end(JSON.stringify(msg));
 	}
 
-	var docs = data.rows.map(function(x) { return x.doc; });
+	var docs = data.rows.map(function(x) {
+	    x.doc.ui = x.doc.ui || 'unknown';
+	    return x.doc;
+	});
 	res.end(JSON.stringify(docs));
     });
 });
@@ -335,6 +339,7 @@ function list_generic(fullurl, res) {
 		    function(x) {
 			var g = x.doc.group || x.doc.id;
 			x.doc.group = g;
+			x.doc.ui = x.doc.ui || 'unknown';
 			x.doc.check_output = null;
 			x.doc.preperror_log = null;
 			if (! reply[g]) { reply[g] = [ ] }
