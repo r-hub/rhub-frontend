@@ -25,6 +25,10 @@
       </ul>    
 
       <ul class="nav navbar-nav">
+        <li><a href="https://r-hub.github.io/rhub/">R-hub from R</a></li>
+      </ul> 
+    
+      <ul class="nav navbar-nav">
         <li><a href="https://docs.r-hub.io/">Docs</a></li>
       </ul>    
 
