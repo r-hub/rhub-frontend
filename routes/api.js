@@ -29,7 +29,7 @@ router.post('/check/validate_email', function(req, res) {
     if (! data.email ) {
 	return res.set('Content-Type', 'application/json; charset=utf-8')
 	    .status(400)
-	    .end(JSON.stringify({
+	    .send(JSON.stringify({
 		"result": "error",
 		"message": "Invalid data, no 'email' field"
 	    }));
@@ -45,7 +45,7 @@ router.post('/check/validate_email', function(req, res) {
 	    if (err) { return internal_error(res); }
 	    return res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(200)
-		.end(JSON.stringify({
+		.send(JSON.stringify({
 		    "result": "success",
 		    "message": "Email sent."
 		}));
@@ -61,7 +61,7 @@ router.post('/check/submit', function(req, res) {
 	! data.version) {
 	return res.set('Content-Type', 'application/json; charset=utf-8')
 	    .status(400)
-	    .end(JSON.stringify({
+	    .send(JSON.stringify({
 		"result": "error",
 		"message":
 		"Invalid data, need 'email', 'token', 'file', 'package', 'version'"
@@ -84,7 +84,7 @@ router.post('/check/submit', function(req, res) {
 	    } else {
 		return res.set('Content-Type', 'application/json; charset=utf-8')
 		    .status(401)
-		    .end(JSON.stringify({
+		    .send(JSON.stringify({
 			"result": "error",
 			"message": "Email address not validated"
 		    }));
@@ -97,7 +97,7 @@ function internal_error(res, message) {
     var msg = message || "Cannot send email";
     return res.set('Content-Type', 'application/json; charset=utf-8')
 	.status(500)
-	.end(JSON.stringify({
+	.send(JSON.stringify({
 	    "result": "error",
 	    "message": msg
 	}));
@@ -131,7 +131,7 @@ function valid_submission(req, res, data) {
 		}
 		res.set('Content-Type', 'application/json; charset=utf-8')
 		    .status(201)
-		    .end(JSON.stringify(results));
+		    .send(JSON.stringify(results));
 	    }
 	);
     });
@@ -218,12 +218,12 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
             if (err) {
                 var msg = { 'status': 'error',
                             'message': 'Build not found' };
-                return res.set(404)
-                    .end(JSON.stringify(msg));
+                return res.status(404)
+                    .send(JSON.stringify(msg));
             }
 
 	    response.ui = response.ui || 'unknown';
-            res.end(response);
+            res.send(response);
         }
     );
 });
@@ -243,7 +243,7 @@ router.get(
 	    var data = JSON.parse(response).rows;
 	    var result = data.map(function(x) { return x.doc; });
 	    res.set('Content-Type', 'application/json; charset=utf-8')
-		.end(JSON.stringify(result));
+		.send(JSON.stringify(result));
 	});
     }
 );
@@ -257,7 +257,7 @@ router.post('/status', function(req, res) {
 
     if (! data.id || !isArray(data.id)) {
 	return res.status(400)
-	    .end(JSON.stringify({
+	    .send(JSON.stringify({
 		"result": "error",
 		"message": "Invalid data, need 'id', a list of ids" }));
     }
@@ -268,8 +268,8 @@ router.post('/status', function(req, res) {
 	if (err) {
 	    var msg = { 'status': 'error',
 			'message': 'Build not found: ' + err };
-	    return res.set(404)
-		.end(JSON.stringify(msg));
+	    return res.status(404)
+		.send(JSON.stringify(msg));
 	}
 
 	var errors = [];
@@ -286,7 +286,7 @@ router.post('/status', function(req, res) {
 	    x.doc.ui = x.doc.ui || 'unknown';
 	    return x.doc;
 	});
-	res.end(JSON.stringify(docs));
+	res.send(JSON.stringify(docs));
     });
 });
 
@@ -299,7 +299,7 @@ router.post('/list', function(req, res) {
     if (! data.email || ! data.token) {
 	return res.set('Content-Type', 'application/json; charset=utf-8')
 	    .status(400)
-	    .end(JSON.stringify({
+	    .send(JSON.stringify({
 		"result": "error",
 		"message": "Invalid data, need 'email' and 'token'" }));
     }
@@ -309,7 +309,7 @@ router.post('/list', function(req, res) {
 	if (data.token != token) {
 	    return res.set('Content-Type', 'application/json; charset=utf-8')
 		.status(401)
-		.end(JSON.stringify({
+		.send(JSON.stringify({
 		    "result": "error",
 		    "message": "Email address not validated"
 		}));
@@ -380,7 +380,7 @@ function list_generic(fullurl, res) {
 		);
 
 		res.set('Content-Type', 'application/json; charset=utf-8')
-		    .end(JSON.stringify(reply));
+		    .send(JSON.stringify(reply));
 	    });
     });
 }
@@ -399,7 +399,7 @@ function list_email(req, res, email) {
 	    function(x) { return x.value; }
 	);
 	res.set('Content-Type', 'application/json; charset=utf-8')
-	    .end(JSON.stringify(list));
+	    .send(JSON.stringify(list));
     });
 }
 
@@ -418,7 +418,7 @@ function list_email_package(req, res, email, pkg) {
 	    function(x) { return x.value; }
 	);
 	res.set('Content-Type', 'application/json; charset=utf-8')
-	    .end(JSON.stringify(list));
+	    .send(JSON.stringify(list));
     });
 }
 
@@ -455,7 +455,7 @@ router.get(
 	    }
 
 	    res.set('Content-Type', 'application/json; charset=utf-8')
-		.end(JSON.stringify(data));
+		.send(JSON.stringify(data));
 	});
     }
 );
