@@ -272,6 +272,16 @@ router.post('/status', function(req, res) {
 		.end(JSON.stringify(msg));
 	}
 
+	var errors = [];
+	data.rows.map(function(x) { if (x.error) errors.push(x) });
+	if (errors.length) {
+	    var msg = { 'status': 'error',
+			'message': 'not found',
+			'details': errors };
+	    return res.status(404)
+		.send(JSON.stringify(msg));
+	}
+
 	var docs = data.rows.map(function(x) {
 	    x.doc.ui = x.doc.ui || 'unknown';
 	    return x.doc;
