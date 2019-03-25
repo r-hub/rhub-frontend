@@ -228,6 +228,27 @@ router.get(new RegExp('^/status/' + re_status + '$'), function(req, res) {
     );
 });
 
+router.get(
+    new RegExp('^/status/group/' + re_status + '$'),
+    function(req, res) {
+	var name = req.params[0];
+
+	var fullurl = urls.logdb + '/_design/app/_rewrite/-/bygroup/' +
+	    encodeURIComponent(name);
+	var _url = url.parse(fullurl);
+	var dburl = _url.protocol + '//' + _url.host + _url.path;
+
+	got.get(dburl, { auth: _url.auth }, function(err, response) {
+	    if (err) { return internal_error(res, "Cannot find group"); }
+	    var data = JSON.parse(response).rows;
+	    var result = data.map(function(x) { return x.doc; });
+	    res.set('Content-Type', 'application/json; charset=utf-8')
+		.end(JSON.stringify(result));
+	});
+    }
+);
+
+
 router.post('/status', function(req, res) {
 
     var data = req.body;
