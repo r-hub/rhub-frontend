@@ -11,7 +11,8 @@
 	"docker-image": "debian-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -26,7 +27,8 @@
 	"docker-image": "debian-gcc-release",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -41,7 +43,8 @@
 	"docker-image": "debian-gcc-patched",
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -56,7 +59,8 @@
 	"docker-image": "fedora-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -71,7 +75,8 @@
 	"docker-image": "fedora-clang-devel",
 	"sysreqs-platform": "linux-x86_64-fedora-clang",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -86,7 +91,8 @@
 	"docker-image": "ubuntu-gcc-devel",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -101,7 +107,8 @@
 	"docker-image": "ubuntu-gcc-release",
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -116,7 +123,8 @@
 	"docker-image": "centos6-epel",
 	"sysreqs-platform": "linux-x86_64-centos6-epel",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -131,7 +139,8 @@
 	"docker-image": "centos6-epel-rdt",
 	"sysreqs-platform": "linux-x86_64-centos6-epel",
 	"categories": ["Linux"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -147,7 +156,8 @@
 	"sysreqs-platform": "linux-x86_64-debian-gcc",
         "output-parser": "sanitizers",
 	"categories": ["Checks for compiled code"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -162,7 +172,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"]
+	"node-labels": ["windows", "rtools3"],
+	"queue": "rtools3"
     },
 
     {
@@ -177,7 +188,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"]
+	"node-labels": ["windows", "rtools3"],
+	"queue": "rtools3"
     },
 
     {
@@ -192,7 +204,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"]
+	"node-labels": ["windows", "rtools3"],
+	"queue": "rtools3"
     },
 
     {
@@ -207,7 +220,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"]
+	"node-labels": ["windows", "rtools3"],
+	"queue": "rtools3"
     },
 
     {
@@ -222,7 +236,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2012",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools4.0"]
+	"node-labels": ["windows", "rtools4.0"],
+	"queue": "rtools4.0"
     },
 
     {
@@ -238,7 +253,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang",
 	"categories": ["macOS"],
-	"node-labels": ["macos", "mavericks", "r-oldrel"]
+	"node-labels": ["macos", "mavericks", "r-oldrel"],
+	"queue": "mavericks"
     },
 
     {
@@ -254,7 +270,8 @@
 	"docker-image": null,
 	"sysreqs-platform": "osx-x86_64-clang",
 	"categories": ["macOS"],
-	"node-labels": ["macos", "elcapitan", "r-release"]
+	"node-labels": ["macos", "elcapitan", "r-release"],
+	"queue": "elcapitan"
     },
 
     {
@@ -270,7 +287,8 @@
 	"sysreqs-platform": "linux-x86_64-ubuntu-gcc",
         "output-parser": "rchk",
 	"categories": ["Checks for compiled code"],
-	"node-labels": ["linux"]
+	"node-labels": ["linux"],
+	"queue": "linux"
     },
 
     {
@@ -285,6 +303,7 @@
 	"docker-image": null,
 	"sysreqs-platform": "solaris-10",
 	"categories": ["Solaris"],
-	"node-labels": ["solaris"]
+	"node-labels": ["solaris"],
+	"queue": "solaris"
     }
 ]
