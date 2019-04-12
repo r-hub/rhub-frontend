@@ -56,8 +56,8 @@
 	"cpu-type": "x86_64",
 	"os-info": "Debian GNU/Linux testing",
 	"compilers": "clang version 7.0.1-8 (tags/RELEASE_701/final)",
-	"docker-image": "debian-gcc-devel",
-	"sysreqs-platform": "linux-x86_64-debian-gcc",
+	"docker-image": "debian-clang-devel",
+	"sysreqs-platform": "linux-x86_64-debian-clang",
 	"categories": ["Linux"],
 	"node-labels": ["linux"],
 	"queue": "linux"
