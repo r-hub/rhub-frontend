@@ -16,6 +16,22 @@
     },
 
     {
+	"name": "debian-gcc-devel-nold",
+	"description": "Debian Linux, R-devel, GCC, no long double",
+	"cran-name": null,
+	"rversion": "r-devel",
+	"os-type": "Linux",
+	"cpu-type": "x86_64",
+	"os-info": "Debian GNU/Linux testing",
+	"compilers": "gcc version 8.3.0 (Debian 8.3.0-5)",
+	"docker-image": "debian-gcc-devel-nold",
+	"sysreqs-platform": "linux-x86_64-debian-gcc",
+	"categories": ["Linux"],
+	"node-labels": ["linux"],
+	"queue": "linux"
+    },
+
+    {
 	"name": "debian-gcc-release",
 	"description": "Debian Linux, R-release, GCC",
 	"cran-name": "r-release-linux-x86_64",
