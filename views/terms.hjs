@@ -41,6 +41,21 @@
 	    purposes. We do not give out the check output to anyone,
 	    except for the package maintainer, as declared in the
 	    DESCRIPTION file of the package.</p>
+	    
+	   <p>We use <a href="https://analytics.google.com/analytics/web/">
+	   Google Analytics</a> to log data and ultimately improve 
+	   the website, with the following settings:
+	   
+	   <ul>
+      <li><p>IP addresses are anonymized within Google Analytics,</p></li>
+      
+      <li><p>The GA templates respect the “Do Not Track” HTTP header,
+      </p></li>
+      
+      <li><p>The use of Cookies is disabled, instead Session Storage to 
+      Store the GA Client ID is used.</p></li>
+      </ul>
+</p>
 
 	  <h2>Disclaimer</h2>
 
