@@ -368,6 +368,9 @@ function list_generic(fullurl, res) {
 		var jresponse2 = JSON.parse(response2);
 		jresponse2.rows.map(
 		    function(x) {
+                        if (!x.doc) {
+                            return internal_error(res, "Internal error");
+                        }
 			var g = x.doc.group || x.doc.id;
 			x.doc.group = g;
 			x.doc.ui = x.doc.ui || 'unknown';
