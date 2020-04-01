@@ -304,21 +304,5 @@
 	"categories": ["Checks for compiled code"],
 	"node-labels": ["linux"],
 	"queue": "linux"
-    },
-
-    {
-	"name": "solaris-x86-patched",
-	"description": "Oracle Solaris 10, x86, 32 bit, R-patched (experimental)",
-	"cran-name": "r-patched-solaris-x86",
-	"rversion": "r-patched",
-	"os-type": "Solaris",
-	"cpu-type": "x86_64",
-	"os-info": "SunOS 5.10 Generic_147148-26 i86pc i386 i86pc",
-	"compilers": "GCC 5.2.0",
-	"docker-image": null,
-	"sysreqs-platform": "solaris-10",
-	"categories": ["Solaris"],
-	"node-labels": ["solaris"],
-	"queue": "solaris"
     }
 ]
