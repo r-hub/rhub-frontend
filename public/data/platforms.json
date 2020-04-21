@@ -200,7 +200,7 @@
 	"os-type": "Windows",
 	"cpu-type": "x86_64",
 	"os-info": "Windows Server 2008 R2 SP1",
-	"compilers": "GCC 4.6.3, Rtools 3.3",
+	"compilers": "GCC 4.9.3, Rtools 3.5",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
@@ -216,12 +216,12 @@
 	"os-type": "Windows",
 	"cpu-type": "x86_64",
 	"os-info": "Windows Server 2008 R2 SP1",
-	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"compilers": "GCC 8.3.0, Rtools 4.0",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"],
-	"queue": "rtools3"
+	"node-labels": ["windows", "rtools4"],
+	"queue": "rtools4"
     },
 
     {
@@ -232,12 +232,12 @@
 	"os-type": "Windows",
 	"cpu-type": "x86_64",
 	"os-info": "Windows Server 2008 R2 SP1",
-	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"compilers": "GCC 8.3.0, Rtools 4.0",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"],
-	"queue": "rtools3"
+	"node-labels": ["windows", "rtools4"],
+	"queue": "rtools4"
     },
 
     {
@@ -248,28 +248,12 @@
 	"os-type": "Windows",
 	"cpu-type": "x86_64",
 	"os-info": "Windows Server 2008 R2 SP1",
-	"compilers": "GCC 4.9.3, Rtools 3.4",
+	"compilers": "GCC 8.3.0, Rtools 4.0",
 	"docker-image": null,
 	"sysreqs-platform": "windows-2008",
 	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools3"],
-	"queue": "rtools3"
-    },
-
-    {
-	"name": "windows-x86_64-devel-rtools4",
-	"description": "Windows Server 2012, R-devel, Rtools4.0, 32/64 bit (experimental)",
-	"cran-name": null,
-	"rversion": "r-testing",
-	"os-type": "Windows",
-	"cpu-type": "x86_64",
-	"os-info": "Windows Server 2012",
-	"compilers": "Rtools 4.0",
-	"docker-image": null,
-	"sysreqs-platform": "windows-2012",
-	"categories": ["Windows"],
-	"node-labels": ["windows", "rtools4.0"],
-	"queue": "rtools4.0"
+	"node-labels": ["windows", "rtools4"],
+	"queue": "rtools4"
     },
 
     {
