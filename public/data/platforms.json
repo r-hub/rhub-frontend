@@ -258,8 +258,8 @@
 
     {
 	"name": "macos-highsierra-release",
-	"description": "macOS 10.13.6 High Sierra, R-release",
-	"cran-name": "r-release-osx-x86_64",
+	"description": "macOS 10.13.6 High Sierra, R-release, brew",
+	"cran-name": null,
 	"rversion": "r-release",
 	"os-type": "macOS",
 	"macos-version": "highsierra",
@@ -271,6 +271,23 @@
 	"categories": ["macOS"],
 	"node-labels": ["macos", "highsierra", "r-release"],
 	"queue": "highsierra"
+    },
+
+    {
+	"name": "macos-highsierra-release-cran",
+	"description": "macOS 10.13.6 High Sierra, R-release, CRAN's setup",
+	"cran-name": "r-release-osx-x86_64",
+	"rversion": "r-release",
+	"os-type": "macOS",
+	"macos-version": "highsierra",
+	"cpu-type": "x86_64",
+	"os-info": "Mac OS 10.13.6",
+	"compilers": "XCode 10.1, Apple LLVM version 10.0.0 (clang-1000.10.44.4)",
+	"docker-image": null,
+	"sysreqs-platform": "osx-x86_64-clang",
+	"categories": ["macOS"],
+	"node-labels": ["macos", "highsierracran", "r-release"],
+	"queue": "highsierracran"
     },
 
     {
