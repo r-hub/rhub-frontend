@@ -258,7 +258,7 @@
 
     {
 	"name": "macos-highsierra-release",
-	"description": "macOS 10.14 High Sierra, R-release",
+	"description": "macOS 10.13.6 High Sierra, R-release",
 	"cran-name": "r-release-osx-x86_64",
 	"rversion": "r-release",
 	"os-type": "macOS",
