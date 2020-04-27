@@ -15,6 +15,11 @@
     },
 
     {
+	"name": "solaris",
+	"description": "Solaris jobs"
+    },
+
+    {
 	"name": "elcapitan",
 	"description": "macOS 10.11 (El Capitan) jobs"
     }
