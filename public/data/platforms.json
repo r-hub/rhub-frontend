@@ -321,5 +321,22 @@
 	"categories": ["Solaris"],
 	"node-labels": ["solaris"],
 	"queue": "solaris"
+    },
+
+    {
+	"name": "solaris-x86-patched-ods",
+	"description": "Oracle Solaris 10, x86, 32 bit, R-release, Oracle Developer Studio 12.6",
+	"cran-name": "r-patched-solaris-x86",
+	"rversion": "r-release",
+	"os-type": "Solaris",
+	"cpu-type": "x86_64",
+	"os-info": "SunOS unknown 5.10 Generic_147148-26 i86pc i386 i86pc",
+	"compilers": "Oracle Developer Studio 12.6",
+	"docker-image": null,
+	"sysreqs-platform": "solaris-10",
+	"categories": ["Solaris"],
+	"node-labels": ["solaris"],
+	"queue": "solaris",
+	"params": "ods=true"
     }
 ]
