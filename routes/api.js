@@ -366,10 +366,12 @@ function list_generic(fullurl, res) {
 		if (err2) { return internal_error(res, "Internal error"); }
 		var reply = { };
 		var jresponse2 = JSON.parse(response2);
+                var failed = false;
 		jresponse2.rows.map(
 		    function(x) {
                         if (!x.doc) {
-                            return internal_error(res, "Internal error");
+                            failed = true;
+                            return null;
                         }
 			var g = x.doc.group || x.doc.id;
 			x.doc.group = g;
@@ -382,8 +384,12 @@ function list_generic(fullurl, res) {
 		    }
 		);
 
-		res.set('Content-Type', 'application/json; charset=utf-8')
-		    .send(JSON.stringify(reply));
+                if (failed) {
+                    return internal_error(res, "Internal error");
+                } else {
+		    res.set('Content-Type', 'application/json; charset=utf-8')
+		        .send(JSON.stringify(reply));
+                }
 	    });
     });
 }
