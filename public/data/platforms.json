@@ -241,6 +241,40 @@
     },
 
     {
+	"name": "macos-highsierra-release",
+	"description": "macOS 10.13.6 High Sierra, R-release, brew",
+	"cran-name": null,
+	"rversion": "r-release",
+	"os-type": "macOS",
+	"macos-version": "highsierra",
+	"cpu-type": "x86_64",
+	"os-info": "Mac OS 10.13.6",
+	"compilers": "XCode 10.1, Apple LLVM version 10.0.0 (clang-1000.10.44.4)",
+	"docker-image": null,
+	"sysreqs-platform": "osx-x86_64-clang",
+	"categories": ["macOS"],
+	"node-labels": ["macos", "highsierra", "r-release"],
+	"queue": "highsierra"
+    },
+
+    {
+	"name": "macos-highsierra-release-cran",
+	"description": "macOS 10.13.6 High Sierra, R-release, CRAN's setup",
+	"cran-name": "r-release-osx-x86_64",
+	"rversion": "r-release",
+	"os-type": "macOS",
+	"macos-version": "highsierra",
+	"cpu-type": "x86_64",
+	"os-info": "Mac OS 10.13.6",
+	"compilers": "XCode 10.1, Apple LLVM version 10.0.0 (clang-1000.10.44.4)",
+	"docker-image": null,
+	"sysreqs-platform": "osx-x86_64-clang",
+	"categories": ["macOS"],
+	"node-labels": ["macos", "highsierracran", "r-release"],
+	"queue": "highsierracran"
+    },
+
+    {
 	"name": "macos-m1-bigsur-release",
 	"description": "Apple Silicon (M1), macOS 11.6 Big Sur, R-release",
 	"cran-name": "r-release-macos-arm64",
@@ -272,5 +306,38 @@
 	"categories": ["Checks for compiled code"],
 	"node-labels": ["linux"],
 	"queue": "linux"
+    },
+
+    {
+	"name": "solaris-x86-patched",
+	"description": "Oracle Solaris 10, x86, 32 bit, R-release",
+	"cran-name": "r-patched-solaris-x86",
+	"rversion": "r-release",
+	"os-type": "Solaris",
+	"cpu-type": "x86_64",
+	"os-info": "SunOS unknown 5.10 Generic_147148-26 i86pc i386 i86pc",
+	"compilers": "GCC 5.5.0",
+	"docker-image": null,
+	"sysreqs-platform": "solaris-10",
+	"categories": ["Solaris"],
+	"node-labels": ["solaris"],
+	"queue": "solaris"
+    },
+
+    {
+	"name": "solaris-x86-patched-ods",
+	"description": "Oracle Solaris 10, x86, 32 bit, R release, Oracle Developer Studio 12.6",
+	"cran-name": "r-patched-solaris-x86",
+	"rversion": "r-release",
+	"os-type": "Solaris",
+	"cpu-type": "x86_64",
+	"os-info": "SunOS unknown 5.10 Generic_147148-26 i86pc i386 i86pc",
+	"compilers": "Oracle Developer Studio 12.6",
+	"docker-image": null,
+	"sysreqs-platform": "solaris-10",
+	"categories": ["Solaris"],
+	"node-labels": ["solaris"],
+	"queue": "solaris",
+	"params": "ods=true"
     }
 ]
