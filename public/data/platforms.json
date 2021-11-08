@@ -352,7 +352,7 @@
 	"docker-image": null,
 	"sysreqs-platform": "windows-2019",
 	"categories": ["Windows"],
-	"node-labels": ["windows-ucrt"]
+	"node-labels": ["windows-ucrt"],
 	"queue": "ucrt"
     }
 ]
