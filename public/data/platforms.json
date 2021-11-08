@@ -339,5 +339,20 @@
 	"node-labels": ["solaris"],
 	"queue": "solaris",
 	"params": "ods=true"
+    },
+    {
+	"name": "windows-x86_64-devel-ucrt",
+	"description": "Windows Server 2019, UCRT R-devel, 64 bit",
+	"cran-name": "r-devel-windows-x86_64-gcc10-UCRT",
+	"rversion": "r-devel",
+	"os-type": "Windows",
+	"cpu-type": "x86_64",
+	"os-info": "Windows Server 2019",
+	"compilers": "GCC 10.2.0",
+	"docker-image": null,
+	"sysreqs-platform": "windows-2019",
+	"categories": ["Windows"],
+	"node-labels": ["windows-ucrt"]
+	"queue": "ucrt"
     }
 ]

@@ -15,6 +15,11 @@
     },
 
     {
+	"name": "ucrt",
+	"description": "Windows jobs that use UCRT R"
+    },
+
+    {
 	"name": "solaris",
 	"description": "Solaris jobs"
     },
