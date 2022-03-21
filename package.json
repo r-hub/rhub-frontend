@@ -35,7 +35,7 @@
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "pretty-ms": "^2.1.0",
-    "rdesc-parser": "git://github.com/r-hub/rdesc-parser.git",
+    "rdesc-parser": "https://github.com/r-hub/rdesc-parser.git",
     "redis": "^2.6.2",
     "rhub-node": "^1.1.0",
     "serve-favicon": "~2.3.0",
