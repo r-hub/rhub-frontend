@@ -81,5 +81,69 @@
 	"node-labels": ["solaris"],
 	"queue": "solaris",
 	"params": "ods=true"
+    },
+
+    {
+       "name": "windows-x86_64-oldrel",
+       "description": "Windows Server 2022, R-oldrel, 32/64 bit",
+       "cran-name": "r-oldrel-windows-ix86+x86_64",
+       "rversion": "r-oldrel",
+       "os-type": "Windows",
+       "cpu-type": "x86_64",
+       "os-info": "Windows Server 2028",
+       "compilers": "GCC 8.3.0, Rtools 4.0",
+       "docker-image": null,
+       "sysreqs-platform": "windows-2022",
+       "categories": ["Windows"],
+       "node-labels": ["windows", "rtools4"],
+       "queue": "rtools4"
+    },
+
+    {
+       "name": "windows-x86_64-release",
+       "description": "Windows Server 2022, R-release, 32/64 bit",
+       "cran-name": "r-release-windows-ix86+x86_64",
+       "rversion": "r-release",
+       "os-type": "Windows",
+       "cpu-type": "x86_64",
+       "os-info": "Windows Server 2022",
+       "compilers": "GCC 8.3.0, Rtools 4.0",
+       "docker-image": null,
+       "sysreqs-platform": "windows-2022",
+       "categories": ["Windows"],
+       "node-labels": ["windows", "rtools4"],
+       "queue": "rtools4"
+    },
+
+    {
+       "name": "windows-x86_64-patched",
+       "description": "Windows Server 2022, R-patched, 32/64 bit",
+       "cran-name": null,
+       "rversion": "r-patched",
+       "os-type": "Windows",
+       "cpu-type": "x86_64",
+       "os-info": "Windows Server 2022 R2 SP1",
+       "compilers": "GCC 8.3.0, Rtools 4.0",
+       "docker-image": null,
+       "sysreqs-platform": "windows-2008",
+       "categories": ["Windows"],
+       "node-labels": ["windows", "rtools4"],
+       "queue": "rtools4"
+    },
+
+    {
+       "name": "windows-x86_64-devel",
+       "description": "Windows Server 2022, R-devel, 64 bit",
+       "cran-name": "r-devel-windows-x86_64-new-UL",
+       "rversion": "r-devel",
+       "os-type": "Windows",
+       "cpu-type": "x86_64",
+       "os-info": "Windows Server 2022",
+	"compilers": "GCC 10.3.0, Rtools42",
+       "docker-image": null,
+       "sysreqs-platform": "windows-2022",
+       "categories": ["Windows"],
+       "node-labels": ["windows-ucrt"],
+       "queue": "ucrt"
     }
 ]
