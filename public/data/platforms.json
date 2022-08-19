@@ -226,6 +226,23 @@
     },
 
     {
+       "name": "ubuntu-rchk",
+       "description": "Ubuntu Linux 20.04.1 LTS, R-devel with rchk",
+       "cran-name": null,
+       "rversion": "r-devel",
+       "os-type": "Linux",
+       "cpu-type": "x86_64",
+       "os-info": "Ubuntu 20.04.1 LTS",
+       "compilers": "clang version 12.0.0-3ubuntu1~20.04.5",
+       "docker-image": "ubuntu-rchk",
+       "sysreqs-platform": "linux-x86_64-ubuntu-gcc",
+       "output-parser": "rchk",
+       "categories": ["Checks for compiled code"],
+       "node-labels": ["linux"],
+       "queue": "linux"
+    },
+
+    {
 	"name": "macos-highsierra-release",
 	"description": "macOS 10.13.6 High Sierra, R-release, brew",
 	"cran-name": null,
