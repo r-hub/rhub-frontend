@@ -277,6 +277,23 @@
     },
 
     {
+	"name": "macos-m1-bigsur-release",
+	"description": "Apple Silicon (M1), macOS 11.6 Big Sur, R-release",
+	"cran-name": "r-release-macos-arm64",
+	"rversion": "r-release",
+	"os-type": "macOS",
+	"macos-version": "bigsur",
+	"cpu-type": "aarch64",
+	"os-info": "Mac OS 11.6",
+	"compilers": "XCode 12.4, Apple clang version 12.0.0",
+	"docker-image": null,
+	"sysreqs-platform": "osx-aarch64-clang",
+	"categories": ["macOS"],
+	"node-labels": ["macos", "m1", "r-release"],
+	"queue": "m1"
+    },
+
+    {
 	"name": "solaris-x86-patched",
 	"description": "Oracle Solaris 10, x86, 32 bit, R-release",
 	"cran-name": "r-patched-solaris-x86",
