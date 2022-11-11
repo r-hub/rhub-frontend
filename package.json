@@ -27,7 +27,7 @@
     "jenkins-log-stream": "^1.0.4",
     "left-pad": "^1.1.0",
     "mailgun-js": "^0.20.0",
-    "morgan": "~1.6.1",
+    "morgan": "~1.10.0",
     "multer": "^1.1.0",
     "multiline": "^1.0.2",
     "mustache": "^2.2.1",
